@@ -2,10 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\data",
-    "\\data\\PACS",
+    "\\data\\PACS\\kfold",
+    "\\data\\PACS\\kfold\\art_painting",
+    "\\data\\PACS\\kfold\\art_painting\\dog",
     "\\experiments",
     "\\models"
   ],
-  "SelectedNode": "\\data\\PACS",
+  "SelectedNode": "\\models\\base_model.py",
   "PreviewInSolutionExplorer": false
 }

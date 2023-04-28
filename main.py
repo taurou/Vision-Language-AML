@@ -1,4 +1,5 @@
 import os
+import sys
 import logging
 from parse_args import parse_arguments
 from load_data import build_splits_baseline, build_splits_domain_disentangle, build_splits_clip_disentangle
@@ -47,11 +48,15 @@ def main(opt):
 
                 if iteration % opt['print_every'] == 0:
                     logging.info(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+                    print(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+
                 
                 if iteration % opt['validate_every'] == 0:
                     # Run validation
                     val_accuracy, val_loss = experiment.validate(validation_loader)
                     logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+                    print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+
                     if val_accuracy > best_accuracy:
                         best_accuracy = val_accuracy
                         experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
@@ -65,6 +70,7 @@ def main(opt):
     experiment.load_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth')
     test_accuracy, _ = experiment.validate(test_loader)
     logging.info(f'[TEST] Accuracy: {(100 * test_accuracy):.2f}')
+    print(f'[TEST] Accuracy: {(100 * test_accuracy):.2f}')
 
 if __name__ == '__main__':
 
@@ -75,5 +81,8 @@ if __name__ == '__main__':
 
     # Setup logger
     logging.basicConfig(filename=f'{opt["output_path"]}/log.txt', format='%(message)s', level=logging.INFO, filemode='a')
+    
+    
+
 
     main(opt)
