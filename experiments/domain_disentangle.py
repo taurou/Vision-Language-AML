@@ -2,8 +2,21 @@ import torch
 
 class DomainDisentangleExperiment: # See point 2. of the project
     
-    def __init__(self, opt):
-        raise NotImplementedError('[TODO] Implement DomainDisentangleExperiment.')
+    def __init__(self, opt): #TODO 
+        # Utils
+        self.opt = opt
+        self.device = torch.device('cpu' if opt['cpu'] else 'cuda:0')
+
+        # Setup model
+        self.model = DomainDisentangleExperiment()
+        self.model.train()
+        self.model.to(self.device)
+        for param in self.model.parameters():
+            param.requires_grad = True
+
+        # TODO Setup optimization procedure
+        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=opt['lr'])
+        self.criterion = torch.nn.CrossEntropyLoss()
 
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
@@ -32,7 +45,37 @@ class DomainDisentangleExperiment: # See point 2. of the project
         return iteration, best_accuracy, total_train_loss
 
     def train_iteration(self, data):
-        raise NotImplementedError('[TODO] Implement DomainDisentangleExperiment.')
+        x, y = data
+        x = x.to(self.device)
+        y = y.to(self.device)
+
+        logits = self.model(x)
+        loss = self.criterion(logits, y) #TODO fix loss
+
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+        
+        return loss.item()
 
     def validate(self, loader):
-        raise NotImplementedError('[TODO] Implement DomainDisentangleExperiment.')
+        self.model.eval()
+        accuracy = 0
+        count = 0
+        loss = 0
+        with torch.no_grad():
+            for x, y in loader:
+                x = x.to(self.device)
+                y = y.to(self.device)
+
+                logits = self.model(x)
+                loss += self.criterion(logits, y)
+                pred = torch.argmax(logits, dim=-1)
+
+                accuracy += (pred == y).sum().item()
+                count += x.size(0)
+
+        mean_accuracy = accuracy / count
+        mean_loss = loss / count
+        self.model.train()
+        return mean_accuracy, mean_loss

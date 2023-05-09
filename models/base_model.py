@@ -84,8 +84,15 @@ class DomainDisentangleModel(nn.Module):
         self.category_classifier = nn.Linear(512, 7) #Just like the base model, we consider 7 categories
 
         self.reconstructor = None #TODO
-        raise NotImplementedError('[TODO] Implement DomainDisentangleModel')
 
     def forward(self, x):
-        #TODO
-        raise NotImplementedError('[TODO] Implement DomainDisentangleModel forward() method')
+        x = self.feature_extractor(x)
+        catEncOUT = self.category_encoder(x)
+        domEncOUT = self.domain_encoder(x)
+        catClassificationOUT = self.category_classifier(catEncOUT)
+        domClassificationOUT = self.domain_classifier(domEncOUT)
+        #we need to use a reconstructor with the output of domain and category classification
+
+        self.reconstructor('''FILL here''') #TODO 
+        return x
+
