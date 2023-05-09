@@ -52,11 +52,36 @@ class DomainDisentangleModel(nn.Module):
         super(DomainDisentangleModel, self).__init__()
         self.feature_extractor = FeatureExtractor()
 
-        self.domain_encoder = None #TODO
-        self.category_encoder = None #TODO
+        self.domain_encoder = nn.Sequential(
+            nn.Linear(512, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU(),
 
-        self.domain_classifier = None #TODO
-        self.category_classifier = None #TODO
+            nn.Linear(512, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU(),
+
+            nn.Linear(512, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU()
+        )
+
+        self.category_encoder = nn.Sequential(
+            nn.Linear(512, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU(),
+
+            nn.Linear(512, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU(),
+
+            nn.Linear(512, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU()
+        )
+
+        self.domain_classifier = nn.Linear(512, 2) #We just consider 2 domains at the time. Source and target domain.
+        self.category_classifier = nn.Linear(512, 7) #Just like the base model, we consider 7 categories
 
         self.reconstructor = None #TODO
         raise NotImplementedError('[TODO] Implement DomainDisentangleModel')
