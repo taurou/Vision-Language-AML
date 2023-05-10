@@ -99,19 +99,20 @@ class DomainDisentangleModel(nn.Module):
         )
 
     def forward(self, x):
-        extr_features = self.feature_extractor(x) #also called Fg in the paper
+        Fg = self.feature_extractor(x) #extracted features, also called Fg in the paper
 
-        c_enc = self.category_encoder(extr_features)    #Fcs - Category Specific features
-        d_enc = self.domain_encoder(extr_features)      #Fds - Domain Specific features
+        Fcs = self.category_encoder(Fg)    #Fcs - Category Specific features
+        Fds = self.domain_encoder(Fg)      #Fds - Domain Specific features
 
-        c_cl = self.category_classifier(c_enc)  #Category encoded features + Category Classifier
-        d_cl = self.domain_classifier(d_enc)    #Domain encoded features + Domain Classifier
+        #Cc and Cd = Classify category and domain
+        Cc = self.category_classifier(Fcs)  #Category encoded features + Category Classifier
+        Cd = self.domain_classifier(Fds)    #Domain encoded features + Domain Classifier
         
-        #Adversarial training
-        cd_cl = self.domain_classifier(c_enc)   #Category encoded features + Domain Classifier
-        dc_cl = self.category_classifier(d_enc) #Domain encoded features + Category Classifier
+        #Cross-Adversarial training - C(enc. features)(classifier)
+        Ccd = self.domain_classifier(Fcs)   #Category encoded features + Domain Classifier
+        Cdc = self.category_classifier(Fds) #Domain encoded features + Category Classifier
 
-        #Reconstructing Fg from the Fcs and Fdc category and domain specific features
-        reconstruct = self.reconstructor(cat((c_enc, d_enc), 1)) #Passing the concatenated features of category and domain along the columns to the reconstructor.
-        return (extr_features, c_cl, d_cl, cd_cl, dc_cl, reconstruct)
+        #Feature Reconstructor - Reconstructing Fg from the Fcs and Fdc (category and domain specific features)
+        Rfg = self.reconstructor(cat((Fcs, Fds), 1)) #Passing the concatenated features of category and domain along the columns to the reconstructor.
+        return (Fg, Cc, Cd, Ccd, Cdc, Rfg)
 

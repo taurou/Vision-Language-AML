@@ -1,5 +1,5 @@
 import torch
-
+from utils import EntropyLoss
 class DomainDisentangleExperiment: # See point 2. of the project
     
     def __init__(self, opt): #TODO 
@@ -16,7 +16,9 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
         # TODO Setup optimization procedure
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=opt['lr'])
-        self.criterion = torch.nn.CrossEntropyLoss()
+        self.criterion_CEL = torch.nn.CrossEntropyLoss()
+        self.criterion_EL = EntropyLoss()
+        self.criterion_MSE = torch.nn.MSELoss() #TODO L2 loss or MSE?
 
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
@@ -49,8 +51,14 @@ class DomainDisentangleExperiment: # See point 2. of the project
         x = x.to(self.device)
         y = y.to(self.device)
 
-        (extr_features, c_cl, d_cl, cd_cl, dc_cl, reconstruct) = logits = self.model(x)
+        (Fg, Cc, Cd, Ccd, Cdc, Rfg) = logits = self.model(x)
         loss = self.criterion(logits, y) #TODO extract and handle loss
+
+        #loss from the paper:
+        #loss = w1 * loss_class + w2 * loss_domain + w3 * loss_reconstructor
+        #loss_class = loss_class-CROSSENTROPY + loss_class-ENTROPY
+        #loss_domain = loss_domain-CROSSENTROPY + loss_domain-ENTROPY
+
 
         self.optimizer.zero_grad()
         loss.backward()
