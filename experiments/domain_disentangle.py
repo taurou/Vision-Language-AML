@@ -1,5 +1,5 @@
 import torch
-from utils import EntropyLoss
+from utils import *
 class DomainDisentangleExperiment: # See point 2. of the project
     
     def __init__(self, opt): #TODO 
@@ -18,7 +18,13 @@ class DomainDisentangleExperiment: # See point 2. of the project
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=opt['lr'])
         self.criterion_CEL = torch.nn.CrossEntropyLoss()
         self.criterion_EL = EntropyLoss()
-        self.criterion_MSE = torch.nn.MSELoss() #TODO L2 loss or MSE?
+        self.criterion_L2L = L2Loss() 
+
+        #TODO Weights 
+        w1 = 1
+        w2 = 2
+        w3 = 3
+        alpha = 4
 
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
@@ -56,9 +62,15 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
         #loss from the paper:
         #loss = w1 * loss_class + w2 * loss_domain + w3 * loss_reconstructor
-        #loss_class = loss_class-CROSSENTROPY + loss_class-ENTROPY
-        #loss_domain = loss_domain-CROSSENTROPY + loss_domain-ENTROPY
+        #loss_class = loss_class-CROSSENTROPY + alpha * loss_class-ENTROPY
+        #loss_domain = loss_domain-CROSSENTROPY + alpha * loss_domain-ENTROPY
+        #loss_reconstruction = 
 
+        loss_category = self.criterion_CEL(Cc, y) + self.alpha * -self.criterion_EL(Ccd)
+        loss_domain = self.criterion_CEL(Cc) + self.alpha * -self.criterion_EL(Cdc) #TODO domain label is missing in cross-entropy loss.
+        
+        loss_reconstructor = self.criterion_L2L(Rfg, Fg)
+        loss = self.w1 * loss_category + self.w2 * loss_domain + self.w3 * loss_reconstructor
 
         self.optimizer.zero_grad()
         loss.backward()
