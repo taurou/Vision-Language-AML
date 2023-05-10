@@ -49,8 +49,8 @@ class DomainDisentangleExperiment: # See point 2. of the project
         x = x.to(self.device)
         y = y.to(self.device)
 
-        logits = self.model(x)
-        loss = self.criterion(logits, y) #TODO fix loss
+        (extr_features, c_cl, d_cl, cd_cl, dc_cl, reconstruct) = logits = self.model(x)
+        loss = self.criterion(logits, y) #TODO extract and handle loss
 
         self.optimizer.zero_grad()
         loss.backward()

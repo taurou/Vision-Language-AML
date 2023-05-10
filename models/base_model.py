@@ -1,4 +1,5 @@
 import torch.nn as nn
+from torch import cat
 from torchvision.models import resnet18
 
 class FeatureExtractor(nn.Module):
@@ -83,16 +84,33 @@ class DomainDisentangleModel(nn.Module):
         self.domain_classifier = nn.Linear(512, 2) #We just consider 2 domains at the time. Source and target domain.
         self.category_classifier = nn.Linear(512, 7) #Just like the base model, we consider 7 categories
 
-        self.reconstructor = None #TODO
+        self.reconstructor = nn.Sequential(
+            nn.Linear(1024, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU(),
+
+            nn.Linear(512, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU(),
+
+            nn.Linear(512, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU()
+        )
 
     def forward(self, x):
-        x = self.feature_extractor(x)
-        catEncOUT = self.category_encoder(x)
-        domEncOUT = self.domain_encoder(x)
-        catClassificationOUT = self.category_classifier(catEncOUT)
-        domClassificationOUT = self.domain_classifier(domEncOUT)
-        #we need to use a reconstructor with the output of domain and category classification
+        extr_features = self.feature_extractor(x)
+        c_enc = self.category_encoder(extr_features)
+        d_enc = self.domain_encoder(extr_features)
 
-        self.reconstructor('''FILL here''') #TODO 
-        return x
+        #Specific Features 
+        c_cl = self.category_classifier(c_enc) #Category encoded features + Category Classifier
+        d_cl = self.domain_classifier(d_enc) #Domain encoded features + Domain Classifier
+        
+        #Adversarial training
+        cd_cl = self.domain_classifier(c_enc) #Category encoded features + Domain Classifier
+        dc_cl = self.category_classifier(d_enc) #Domain encoded features + Category Classifier
+
+        reconstruct = self.reconstructor(cat((c_cl, d_cl), 1)) #Passing the concatenated features of category and domain along the columns to the reconstructor.
+        return (extr_features, c_cl, d_cl, cd_cl, dc_cl, reconstruct)
 
