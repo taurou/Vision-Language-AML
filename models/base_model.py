@@ -99,18 +99,19 @@ class DomainDisentangleModel(nn.Module):
         )
 
     def forward(self, x):
-        extr_features = self.feature_extractor(x)
-        c_enc = self.category_encoder(extr_features)
-        d_enc = self.domain_encoder(extr_features)
+        extr_features = self.feature_extractor(x) #also called Fg in the paper
 
-        #Specific Features 
-        c_cl = self.category_classifier(c_enc) #Category encoded features + Category Classifier
-        d_cl = self.domain_classifier(d_enc) #Domain encoded features + Domain Classifier
+        c_enc = self.category_encoder(extr_features)    #Fcs - Category Specific features
+        d_enc = self.domain_encoder(extr_features)      #Fds - Domain Specific features
+
+        c_cl = self.category_classifier(c_enc)  #Category encoded features + Category Classifier
+        d_cl = self.domain_classifier(d_enc)    #Domain encoded features + Domain Classifier
         
         #Adversarial training
-        cd_cl = self.domain_classifier(c_enc) #Category encoded features + Domain Classifier
+        cd_cl = self.domain_classifier(c_enc)   #Category encoded features + Domain Classifier
         dc_cl = self.category_classifier(d_enc) #Domain encoded features + Category Classifier
 
-        reconstruct = self.reconstructor(cat((c_cl, d_cl), 1)) #Passing the concatenated features of category and domain along the columns to the reconstructor.
+        #Reconstructing Fg from the Fcs and Fdc category and domain specific features
+        reconstruct = self.reconstructor(cat((c_enc, d_enc), 1)) #Passing the concatenated features of category and domain along the columns to the reconstructor.
         return (extr_features, c_cl, d_cl, cd_cl, dc_cl, reconstruct)
 
