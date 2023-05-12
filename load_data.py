@@ -105,30 +105,41 @@ def build_splits_domain_disentangle(opt):
     source_examples = read_lines(opt['data_path'], source_domain)
     target_examples = read_lines(opt['data_path'], target_domain)
 
-    # Compute ratios of examples for each category
+    # Compute ratios of SOURCE examples for each category
     source_category_ratios = {category_idx: len(examples_list) for category_idx, examples_list in source_examples.items()}
     source_total_examples = sum(source_category_ratios.values())
     source_category_ratios = {category_idx: c / source_total_examples for category_idx, c in source_category_ratios.items()}
+    source_val_split_length = source_total_examples * 0.2 # 20% of the training split used for validation and test
 
-    # Build splits - we train only on the source domain (Art Painting)
-    val_split_length = source_total_examples * 0.2 # 20% of the training split used for validation
+    # Compute ratios of TARGET examples for each category
+    target_category_ratios = {category_idx: len(examples_list) for category_idx, examples_list in target_examples.items()}
+    target_total_examples = sum(target_category_ratios.values())
+    target_category_ratios = {category_idx: c / target_total_examples for category_idx, c in target_category_ratios.items()}
+    target_val_split_length = target_total_examples * 0.2 # 20% of the training split used for validation and test
 
-    train_examples = []
-    val_examples = []
-    test_examples = []
+    source_train_examples = []
+    target_train_examples = []
+    source_val_examples = []
+    target_test_examples = []
 
+    # Build splits - source domain (Art Painting)
     for category_idx, examples_list in source_examples.items():
-        split_idx = round(source_category_ratios[category_idx] * val_split_length)
+        split_idx = round(source_category_ratios[category_idx] * source_val_split_length)
         for i, example in enumerate(examples_list):
             if i > split_idx:
-                train_examples.append([example, category_idx]) # each pair is [path_to_img, class_label]
+                source_train_examples.append([example, category_idx]) # each pair is [path_to_img, class_label]
             else:
-                val_examples.append([example, category_idx]) # each pair is [path_to_img, class_label]
-    
-    for category_idx, examples_list in target_examples.items():
-        for example in examples_list:
-            test_examples.append([example, category_idx]) # each pair is [path_to_img, class_label]
-    
+                source_val_examples.append([example, category_idx]) # each pair is [path_to_img, class_label]
+
+    # Build splits - target domain
+    for category_idx, examples_list in source_examples.items():
+        split_idx = round(target_category_ratios[category_idx] * target_val_split_length)
+        for i, example in enumerate(examples_list):
+            if i > split_idx:
+                target_train_examples.append([example, category_idx]) # each pair is [path_to_img, class_label] the category label is inserted here but is not used in (unsupervised) training
+            else:
+                target_test_examples.append([example, category_idx]) # each pair is [path_to_img, class_label]
+
     # Transforms
     normalize = T.Normalize([0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]) # ResNet18 - ImageNet Normalization
 
@@ -148,11 +159,12 @@ def build_splits_domain_disentangle(opt):
     ])
 
     # Dataloaders
-    train_loader = DataLoader(PACSDatasetBaseline(train_examples, train_transform), batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=True)
-    val_loader = DataLoader(PACSDatasetBaseline(val_examples, eval_transform), batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
-    test_loader = DataLoader(PACSDatasetBaseline(test_examples, eval_transform), batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
+    source_train_loader = DataLoader(PACSDatasetBaseline(source_train_examples, train_transform), batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=True)
+    target_train_loader = DataLoader(PACSDatasetBaseline(target_train_examples, train_transform), batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=True)
+    source_val_loader = DataLoader(PACSDatasetBaseline(source_val_examples, eval_transform), batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
+    test_loader = DataLoader(PACSDatasetBaseline(target_test_examples, eval_transform), batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
 
-    return train_loader, val_loader, test_loader
+    return source_train_loader, target_train_loader, source_val_loader, test_loader
 
 def build_splits_clip_disentangle(opt):
     raise NotImplementedError('[TODO] Implement build_splits_clip_disentangle') #TODO

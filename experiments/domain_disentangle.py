@@ -1,5 +1,7 @@
 import torch
-from utils import *
+from experiments.utils import *
+from models.base_model import DomainDisentangleModel
+
 class DomainDisentangleExperiment: # See point 2. of the project
     
     def __init__(self, opt): #TODO 
@@ -8,7 +10,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
         self.device = torch.device('cpu' if opt['cpu'] else 'cuda:0')
 
         # Setup model
-        self.model = DomainDisentangleExperiment()
+        self.model = DomainDisentangleModel()
         self.model.train()
         self.model.to(self.device)
         for param in self.model.parameters():
@@ -21,10 +23,10 @@ class DomainDisentangleExperiment: # See point 2. of the project
         self.criterion_L2L = L2Loss() 
 
         #TODO Weights 
-        w1 = 1
-        w2 = 2
-        w3 = 3
-        alpha = 4
+        self.w1 = 1
+        self.w2 = 2
+        self.w3 = 3
+        self.alpha = 4
 
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
@@ -52,11 +54,73 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
         return iteration, best_accuracy, total_train_loss
 
-    def train_iteration(self, data):
-        x, y = data
-        x = x.to(self.device)
-        y = y.to(self.device)
+    def train_iteration(self, data, targetDomain = False):
 
+        if(targetDomain == False):
+            x, y = data
+            x = x.to(self.device)
+            y = y.to(self.device)           
+            domain_labels = torch.zeros(len(x)).to(self.device) #TODO must check if this works
+
+            category_pred = self.model(x, step = 0)
+            category_loss = self.criterion_CEL(category_pred, y)
+            #TODO Handle and propagate loss
+        else:
+            x, _ = data
+            x = x.to(self.device)
+            domain_labels = torch.ones(len(x)).to(self.device) #TODO must check if this works
+            category_loss = 0
+
+        adv_domain = self.model(x, step = 1)
+        adv_domain_loss = self.criterion_EL(adv_domain)
+        #TODO Handle and propagate loss
+
+        domain_pred = self.model(x, step = 2)
+        domain_loss = self.criterion_CEL(domain_pred, domain_labels)
+        #TODO Handle and propagate loss
+
+        adv_category = self.model(x, step = 3)
+        adv_category_loss = self.criterion_EL(adv_category)
+        #TODO Handle and propagate loss
+
+        Fg, Rfg = self.model(x, step = 4) #return recostructor features (Rfg) and extracted features Fg
+        reconstructor_loss = self.criterion_L2L(Rfg, Fg)
+        #TODO handle loss.
+
+        loss = loss = self.w1 * (category_loss + adv_domain_loss*self.alpha) + self.w2 * (domain_labels + adv_category_loss*self.alpha) + self.w3 * reconstructor_loss 
+        self.optimizer.zero_grad() #TODO handle loss, if necessary, here. The idea here is to optimize step by step the model. So we must figure out how to handle this. 
+        loss.backward()
+        self.optimizer.step()
+        return loss.item()
+
+
+
+    def validate(self, loader): #TODO Comment by tauro: during validation phase, we should pass only the source domain? Because, """""theoretically""""" it's the only data with labels and thus can be used to check on the model.
+        self.model.eval()
+        accuracy = 0
+        count = 0
+        loss = 0
+        with torch.no_grad():
+            for x, y in loader:
+                x = x.to(self.device)
+                y = y.to(self.device)
+
+                logits = self.model(x, step = 0 )
+                loss += self.criterion_CEL(logits, y)
+                pred = torch.argmax(logits, dim=-1)
+
+                accuracy += (pred == y).sum().item()
+                count += x.size(0)
+
+        mean_accuracy = accuracy / count
+        mean_loss = loss / count
+        self.model.train()
+        return mean_accuracy, mean_loss
+
+
+
+
+'''
         (Fg, Cc, Cd, Ccd, Cdc, Rfg) = logits = self.model(x)
         loss = self.criterion(logits, y) #TODO extract and handle loss
 
@@ -78,24 +142,5 @@ class DomainDisentangleExperiment: # See point 2. of the project
         
         return loss.item()
 
-    def validate(self, loader):
-        self.model.eval()
-        accuracy = 0
-        count = 0
-        loss = 0
-        with torch.no_grad():
-            for x, y in loader:
-                x = x.to(self.device)
-                y = y.to(self.device)
 
-                logits = self.model(x)
-                loss += self.criterion(logits, y)
-                pred = torch.argmax(logits, dim=-1)
-
-                accuracy += (pred == y).sum().item()
-                count += x.size(0)
-
-        mean_accuracy = accuracy / count
-        mean_loss = loss / count
-        self.model.train()
-        return mean_accuracy, mean_loss
+'''
