@@ -32,7 +32,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
         
         #With a well-trained classifier C, we freeze the parameter weights of C and
         #train the disentangler to generate fds to confuse the category classifier C
-        self.optimizer3 = torch.optim.Adam(self.model.domain_encoder.parameters, lr=opt['lr'])
+        self.optimizer3 = torch.optim.Adam(self.model.domain_encoder.parameters(), lr=opt['lr'])
         
         #maybe the feature extractor is not needed to be optimized because in this step i'm optimizing elsewhere.
         #  In fact the features coming from the reconstruct should be as similar as possible as the features coming from the feature extractor 
@@ -98,7 +98,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
             x, y = data
             x = x.to(self.device)
             y = y.to(self.device)           
-            domain_labels = torch.zeros(len(x)).to(self.device) #TODO must check if this works
+            domain_labels = torch.zeros(len(x), dtype=torch.long).to(self.device) #TODO must check if this works
 
             category_pred = self.model(x, step = 0)
             category_loss = self.w1*self.criterion_CEL(category_pred, y)
@@ -109,7 +109,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
         else:
             x, _ = data
             x = x.to(self.device)
-            domain_labels = torch.ones(len(x)).to(self.device) #TODO must check if this works
+            domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device) #TODO must check if this works
             category_loss = 0
 
         confuse_domain = self.model(x, step = 1)

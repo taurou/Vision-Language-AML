@@ -132,7 +132,7 @@ def build_splits_domain_disentangle(opt):
                 source_val_examples.append([example, category_idx]) # each pair is [path_to_img, class_label]
 
     # Build splits - target domain
-    for category_idx, examples_list in source_examples.items():
+    for category_idx, examples_list in target_examples.items():
         split_idx = round(target_category_ratios[category_idx] * target_val_split_length)
         for i, example in enumerate(examples_list):
             if i > split_idx:
