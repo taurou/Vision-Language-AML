@@ -109,10 +109,10 @@ class DomainDisentangleExperiment: # See point 2. of the project
         else:
             x, _ = data
             x = x.to(self.device)
-            domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device) #TODO must check if this works
+            domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device) 
             category_loss = 0
 
-        confuse_domain = self.model(x, step = 1)
+        confuse_domain = self.model(x, step = 1) #TODO check if softmax is necessary somewhere
         confuse_domain_loss = -self.w1*self.criterion_EL(confuse_domain)*self.alpha
         confuse_domain_loss.backward()
         self.optimizer1.step()
@@ -133,7 +133,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
         self.optimizer3.step()
         self.zero_gradients()
 
-        Fg, Rfg = self.model(x, step = 4) #return recostructor features (Rfg) and extracted features Fg
+        Fg, Rfg = self.model(x, step = 4) #return reconstructor features (Rfg) and extracted features Fg
         reconstructor_loss = self.w3*self.criterion_L2L(Rfg, Fg)
         reconstructor_loss.backward()
         self.optimizer4.step()
