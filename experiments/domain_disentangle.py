@@ -46,10 +46,10 @@ class DomainDisentangleExperiment: # See point 2. of the project
         self.criterion_L2L = L2Loss() 
 
         #TODO Weights 
-        self.w1 = 0.3
-        self.w2 = 0.3
-        self.w3 = 0.4
-        self.alpha = 1
+        self.w1 = 0.003
+        self.w2 = 0.003
+        self.w3 = 0.004
+        self.alpha = 0.1
 
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
