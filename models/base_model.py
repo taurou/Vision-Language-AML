@@ -99,7 +99,7 @@ class DomainDisentangleModel(nn.Module):
         )
 
 
-    def forward(self, x, targetDomain = False):
+    def forward(self, x):
         Fg = self.feature_extractor(x) #extracted features, also called Fg in the paper
 
         Fcs = self.category_encoder(Fg)    #Fcs - Category Specific features
@@ -108,7 +108,6 @@ class DomainDisentangleModel(nn.Module):
         #Category disentanglement
         #1st step(0): Train the category classifier 
         Cc = self.category_classifier(Fcs)  #Category encoded features + Category Classifier
-
         #2nd step(1): confuse the (already trained) domain classifier
         Ccd = self.domain_classifier(Fcs)   #Category encoded features + Domain Classifier - Predicted (fooled domain predictor) domains
 
@@ -122,23 +121,4 @@ class DomainDisentangleModel(nn.Module):
         #Passing the concatenated features of category and domain along the columns to the reconstructor.
         Rfg = self.reconstructor(cat((Fcs, Fds), 1)) #Passing the concatenated features of category and domain along the columns to the reconstructor.
         
-        return (Fg, Cc, Cd, Ccd, Cdc, Rfg)
-
-    
-    def forward(self, x):
-        Fg = self.feature_extractor(x) #extracted features, also called Fg in the paper
-
-        Fcs = self.category_encoder(Fg)    #Fcs - Category Specific features
-        Fds = self.domain_encoder(Fg)      #Fds - Domain Specific features
-
-        #Cc and Cd = Classify category and domain
-        Cc = self.category_classifier(Fcs)  #Category encoded features + Category Classifier
-        Cd = self.domain_classifier(Fds)    #Domain encoded features + Domain Classifier
-        
-        #Cross-Adversarial training - C(enc. features)(classifier)
-        Ccd = self.domain_classifier(Fcs)   #Category encoded features + Domain Classifier
-        Cdc = self.category_classifier(Fds) #Domain encoded features + Category Classifier
-
-        #Feature Reconstructor - Reconstructing Fg from the Fcs and Fdc (category and domain specific features)
-        Rfg = self.reconstructor(cat((Fcs, Fds), 1)) #Passing the concatenated features of category and domain along the columns to the reconstructor.
         return (Fg, Cc, Cd, Ccd, Cdc, Rfg)
