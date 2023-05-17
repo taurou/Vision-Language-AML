@@ -4,7 +4,7 @@ import json
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', type=json.loads, default="[0.03, 0.03, 0.03, 0.11, 0.1]") #w1, w2, w3, alpha
+    parser.add_argument('--weights', type=json.loads, default="[0.99, 0.09, 0.0001, 0.7, 0.1]") #w1, w2, w3, alpha
     parser.add_argument('--experiment', type=str, default='baseline', choices=['baseline', 'domain_disentangle', 'clip_disentangle'])
 
     parser.add_argument('--target_domain', type=str, default='cartoon', choices=['art_painting', 'cartoon', 'sketch', 'photo'])

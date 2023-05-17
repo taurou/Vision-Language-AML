@@ -102,7 +102,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
             y = y.to(self.device)           
             domain_labels = torch.zeros(len(x), dtype=torch.long).to(self.device) #TODO must check if this works
 
-            category_pred = self.model(x, step = 0)
+            category_pred = self.model(x, step = "category_classifier")
             category_loss = self.w1*self.criterion_CEL(category_pred, y)
             category_loss.backward()
             self.optimizer0.step()
@@ -114,7 +114,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
             domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device) 
             category_loss = 0
 
-        confuse_domain = self.model(x, step = 1) #TODO check if softmax is necessary somewhere
+        confuse_domain = self.model(x, step = "confuse_domain_classifier") #TODO check if softmax is necessary somewhere
         confuse_domain_loss = -self.w1*self.criterion_EL(confuse_domain)*self.alpha
         confuse_domain_loss.backward()
         self.optimizer1.step()
@@ -122,20 +122,20 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
 
 
-        domain_pred = self.model(x, step = 2)
+        domain_pred = self.model(x, step = "domain_classifier")
         domain_loss = self.w2*self.criterion_CEL(domain_pred, domain_labels)
         domain_loss.backward()
         self.optimizer2.step()
         self.zero_gradients()
 
 
-        confuse_category = self.model(x, step = 3)
+        confuse_category = self.model(x, step = "confuse_category_classifier")
         confuse_category_loss = -self.w2*self.criterion_EL(confuse_category)*self.alpha
         confuse_category_loss.backward()
         self.optimizer3.step()
         self.zero_gradients()
 
-        Fg, Rfg = self.model(x, step = 4) #return reconstructor features (Rfg) and extracted features Fg
+        Fg, Rfg = self.model(x, step = "reconstructor") #return reconstructor features (Rfg) and extracted features Fg
         reconstructor_loss = self.w3*self.criterion_L2L(Rfg, Fg)
         reconstructor_loss.backward()
         self.optimizer4.step()
@@ -155,7 +155,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
                 x = x.to(self.device)
                 y = y.to(self.device)
 
-                logits = self.model(x, step = 0 )
+                logits = self.model(x, step = "category_classifier" )
                 loss += self.criterion_CEL(logits, y)
                 pred = torch.argmax(logits, dim=-1)
 

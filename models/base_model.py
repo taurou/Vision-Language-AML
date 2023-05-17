@@ -104,29 +104,29 @@ class DomainDisentangleModel(nn.Module):
         
         #Category disentanglement
         #1st step(0): Train the category classifier 
-        if step == 0: 
+        if step == "category_classifier": 
             x = self.category_encoder(x)       #Fcs - Category Specific features
             x = self.category_classifier(x)    #Predicted Categories
 
         #2nd step(1): confuse the (already trained) domain classifier
-        elif step == 1:
+        elif step == "confuse_domain_classifier":
             x = self.category_encoder(x)       #Fcs - Category Specific features
             x = self.domain_classifier(x)      #Predicted (fooled domain predictor) domains
 
         #Domain disentanglement
         #1st step(2): Train the domain predictor    
-        elif step == 2:
+        elif step == "domain_classifier":
             x = self.domain_encoder(x)          #Fds - Domain Specific features
             x = self.domain_classifier(x)       #Predicted domain
         
         #2nd step(3): confuse the (already trained) category classifier
-        elif step == 3:
+        elif step == "confuse_category_classifier":
             x = self.domain_encoder(x)          #Fds - Domain Specific features
             x = self.category_classifier(x)     #Predicted (fooled category predictor) Categories
         
         #Feature Reconstructor(4) - Reconstructing Fg from the Fcs and Fdc (category and domain specific features)
         #Passing the concatenated features of category and domain along the columns to the reconstructor.
-        elif step == 4:
+        elif step == "reconstructor":
             Fcs = self.category_encoder(x)      #Fcs - Category Specific features
             Fds = self.domain_encoder(x)        #Fds - Domain Specific features
             Rfg = self.reconstructor(cat((Fcs, Fds), 1))
