@@ -52,7 +52,6 @@ def main(opt):
                         if iteration % opt['print_every'] == 0:
                             logging.info(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
                             print(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
-
                         
                         if iteration % opt['validate_every'] == 0:
                             # Run validation
