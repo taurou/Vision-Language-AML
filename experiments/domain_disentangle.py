@@ -46,10 +46,12 @@ class DomainDisentangleExperiment: # See point 2. of the project
         self.criterion_L2L = L2Loss() 
 
         #TODO Weights 
-        self.w1 = 0.003
-        self.w2 = 0.003
-        self.w3 = 0.004
-        self.alpha = 0.1
+        self.w1 = opt["weights"][0]
+        self.w2 = opt["weights"][1]
+        self.w3 = opt["weights"][2]
+        self.alpha = opt["weights"][3]
+        #self.future-paramter = opt["weights"][4] riservato per il futuro clip o chicchessia
+        print("settaggi: ", self.w1, self.w2, self.w3, self.alpha)
 
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
