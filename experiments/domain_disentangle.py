@@ -75,11 +75,11 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
         category_loss = 0 if targetDomain == True else self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
         
-        confuse_domain_loss = self.criterion_EL(Ccd)*self.alpha
+        confuse_domain_loss = -self.criterion_EL(Ccd)*self.alpha
 
         domain_loss = self.criterion_CEL(Cd, domain_labels)
 
-        confuse_category_loss = self.criterion_EL(Cdc)
+        confuse_category_loss = -self.criterion_EL(Cdc)
 
         reconstructor_loss = self.criterion_L2L(Rfg, Fg)
 
@@ -101,9 +101,9 @@ class DomainDisentangleExperiment: # See point 2. of the project
                 x = x.to(self.device)
                 y = y.to(self.device)
 
-                logits = self.model(x, step = 0 )
-                loss += self.criterion_CEL(logits, y)
-                pred = torch.argmax(logits, dim=-1)
+                (_, Cc,_, _, _, _) = self.model(x)
+                loss += self.criterion_CEL(Cc, y)
+                pred = torch.argmax(Cc, dim=-1)
 
                 accuracy += (pred == y).sum().item()
                 count += x.size(0)
@@ -113,7 +113,9 @@ class DomainDisentangleExperiment: # See point 2. of the project
         self.model.train()
         return mean_accuracy, mean_loss
 
-
+    def zero_gradients(self):
+        self.optimizer.zero_grad()
+    
 
 
 '''
