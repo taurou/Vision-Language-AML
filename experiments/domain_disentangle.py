@@ -51,7 +51,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
         self.w3 = opt["weights"][2]
         self.alpha = opt["weights"][3]
         #self.future-paramter = opt["weights"][4] riservato per il futuro clip o chicchessia
-        print("settaggi: ", self.w1, self.w2, self.w3, self.alpha)
+        print("Domain Disentangle parameters: \n","w1: ", self.w1, "w2: ", self.w2, "w3: ", self.w3, "alpha: ", self.alpha)
 
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
