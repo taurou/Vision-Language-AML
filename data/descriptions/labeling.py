@@ -8,9 +8,9 @@ def label_art(domain_path):
     with open(domain_path, "r") as art_file:
         art_lines = list(map(lambda l: l.split()[0], art_file.readlines()))
 
-    start, end= 0, math.floor(len(art_lines)*1/3) - 1                                          #Andrea
-    #start, end= math.ceil(len(art_lines)*1/3)-1 , math.floor(len(art_lines)*2/3) -1            #Jacopo
-    #start, end= math.ceil(len(art_lines)*2/3)-1 , len(art_lines) -1                              #Gabri
+    start, end= 0, math.floor(len(art_lines)*1/3)                                           #Andrea
+    #start, end= math.ceil(len(art_lines)*1/3), math.floor(len(art_lines)*2/3)              #Jacopo
+    #start, end= math.ceil(len(art_lines)*2/3), len(art_lines)                              #Gabri
 
 
     for i, l in enumerate(art_lines[start:end]):
