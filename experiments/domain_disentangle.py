@@ -59,7 +59,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
     def train_iteration(self, data, targetDomain = False):
 
-        self.zero_gradients()
+        self.optimizer.zero_grad()
         
         if(targetDomain == False):
             x, y = data
@@ -75,7 +75,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
         category_loss = 0 if targetDomain == True else self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
         
-        confuse_domain_loss = -self.criterion_EL(Ccd)*self.alpha
+        confuse_domain_loss = -self.criterion_EL(Ccd)
 
         domain_loss = self.criterion_CEL(Cd, domain_labels)
 
@@ -113,32 +113,4 @@ class DomainDisentangleExperiment: # See point 2. of the project
         self.model.train()
         return mean_accuracy, mean_loss
 
-    def zero_gradients(self):
-        self.optimizer.zero_grad()
     
-
-
-'''
-        (Fg, Cc, Cd, Ccd, Cdc, Rfg) = logits = self.model(x)
-        loss = self.criterion(logits, y) #TODO extract and handle loss
-
-        #loss from the paper:
-        #loss = w1 * loss_class + w2 * loss_domain + w3 * loss_reconstructor
-        #loss_class = loss_class-CROSSENTROPY + alpha * loss_class-ENTROPY
-        #loss_domain = loss_domain-CROSSENTROPY + alpha * loss_domain-ENTROPY
-        #loss_reconstruction = 
-
-        loss_category = self.criterion_CEL(Cc, y) + self.alpha * -self.criterion_EL(Ccd)
-        loss_domain = self.criterion_CEL(Cc) + self.alpha * -self.criterion_EL(Cdc) #TODO domain label is missing in cross-entropy loss.
-        
-        loss_reconstructor = self.criterion_L2L(Rfg, Fg)
-        loss = self.w1 * loss_category + self.w2 * loss_domain + self.w3 * loss_reconstructor
-
-        self.optimizer.zero_grad()
-        loss.backward()
-        self.optimizer.step()
-        
-        return loss.item()
-
-
-'''
