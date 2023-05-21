@@ -124,4 +124,4 @@ class DomainDisentangleModel(nn.Module):
         #Passing the concatenated features of category and domain along the columns to the reconstructor.
         Rfg = self.reconstructor(cat((Fcs, Fds), 1)) #Passing the concatenated features of category and domain along the columns to the reconstructor.
         
-        return (Fg, Cc, Cd, Ccd, Cdc, Rfg)
+        return (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds)

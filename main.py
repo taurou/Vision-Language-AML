@@ -19,7 +19,7 @@ def setup_experiment(opt):
 
     elif opt['experiment'] == 'clip_disentangle':
         experiment = CLIPDisentangleExperiment(opt)
-        data = build_splits_clip_disentangle(opt)
+        _, _, _, test_loader = data = build_splits_clip_disentangle(opt)
 
     else:
         raise ValueError('Experiment not yet supported.')
@@ -69,6 +69,42 @@ def main(opt):
                             break
 
             elif opt['experiment'] == 'domain_disentangle':
+                source_train_loader, target_train_loader, source_val_loader, _ = data
+                target_train_loader_iter = iter(target_train_loader)
+
+                while iteration < opt['max_iterations']:
+                    for source_data in source_train_loader:
+                        try:
+                            target_data = next(target_train_loader_iter)
+                        except StopIteration:
+                            # Restarting the iterator if the source loader is bigger
+                            target_train_loader_iter = iter(target_train_loader)
+                            target_data = next(target_train_loader_iter)
+
+                        #We compute once with the unlabeled target domain and once with the labeled source domain
+                        total_train_loss += experiment.train_iteration(source_data, targetDomain = False)
+                        total_train_loss += experiment.train_iteration(target_data, targetDomain = True)
+
+                        if iteration % opt['print_every'] == 0:
+                            logging.info(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+                            print(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+
+                        
+                        if iteration % opt['validate_every'] == 0:
+                            # Run validation
+                            val_accuracy, val_loss = experiment.validate(source_val_loader)
+                            logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+                            print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+
+                            if val_accuracy > best_accuracy:
+                                best_accuracy = val_accuracy
+                                experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+                            experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+
+                        iteration += 1
+                        if iteration > opt['max_iterations']:
+                            break
+            elif opt['experiment'] == 'clip_disentangle':
                 source_train_loader, target_train_loader, source_val_loader, _ = data
                 target_train_loader_iter = iter(target_train_loader)
 
