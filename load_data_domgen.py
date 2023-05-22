@@ -53,17 +53,17 @@ class PACSDatasetBaseline_domgen(Dataset):
         return len(self.examples)
 
     def __getitem__(self, index):
-        img_path, y = self.examples[index]
+        img_path, y, domain = self.examples[index]
         x = self.transform(Image.open(img_path).convert('RGB'))
-        return x, y
+        return x, y, domain
 
 
 def read_lines_domgen(data_path, target_domain):
-    source_examples = {}
+    source_examples_per_domain = {}
     target_examples = {}
 
-    for source_domain, domain_label in DG_labels[target_domain].items():
-
+    for source_domain, _ in DG_labels[target_domain].items():
+        source_examples = {}
         with open(f'{data_path}/{source_domain}.txt') as f:
             lines = f.readlines()
 
@@ -73,11 +73,12 @@ def read_lines_domgen(data_path, target_domain):
             category_idx = CATEGORIES[category_name]
             image_name = line[4]
             image_path = f'{data_path}/kfold/{source_domain}/{category_name}/{image_name}'
-            image_path_domain_label = (image_path, domain_label)
             if category_idx not in source_examples.keys():
-                source_examples[category_idx] = [image_path_domain_label]
+                source_examples[category_idx] = [image_path]
             else:
-                source_examples[category_idx].append(image_path_domain_label)
+                source_examples[category_idx].append(image_path)
+            
+        source_examples_per_domain[source_domain] = source_examples
     
     with open(f'{data_path}/{target_domain}.txt') as f:
         lines = f.readlines()
@@ -88,54 +89,64 @@ def read_lines_domgen(data_path, target_domain):
         category_idx = CATEGORIES[category_name]
         image_name = line[4]
         image_path = f'{data_path}/kfold/{target_domain}/{category_name}/{image_name}'
-        image_path_domain_label = (image_path, 3) #domain_label here is 3
         if category_idx not in source_examples.keys():
-            source_examples[category_idx] = [image_path_domain_label]
+            source_examples[category_idx] = [image_path]
         else:
-            source_examples[category_idx].append(image_path_domain_label)
+            source_examples[category_idx].append(image_path)
 
-    random.shuffle(source_examples)
-    random.shuffle(target_examples)
 
-    return source_examples, target_examples
+    return source_examples_per_domain, target_examples
 
 
 def build_splits_baseline(opt):
     target_domain = opt['target_domain']
 
-    source_examples, target_examples = read_lines_domgen(opt['data_path'], target_domain)
+    source_examples_per_domain, target_examples = read_lines_domgen(opt['data_path'], target_domain)
     
-
-    # Compute ratios of examples for each category
-    source_category_ratios = {category_idx: len(
-        examples_list) for category_idx, examples_list in source_examples.items()}
-    source_total_examples = sum(source_category_ratios.values())
-    source_category_ratios = {
-        category_idx: c / source_total_examples for category_idx, c in source_category_ratios.items()}
-
-    # Build splits - we train only on the source domain (Art Painting)
-    # 20% of the training split used for validation
-    val_split_length = source_total_examples * 0.2
-
     train_examples = []
     val_examples = []
-    test_examples = []
+    test_examples = [] #target domain only
 
-    for category_idx, examples_list in source_examples.items():
-        split_idx = round(
-            source_category_ratios[category_idx] * val_split_length)
-        for i, example in enumerate(examples_list):
-            if i > split_idx:
-                # each pair is [path_to_img, class_label]
-                train_examples.append([example, category_idx])
-            else:
-                # each pair is [path_to_img, class_label]
-                val_examples.append([example, category_idx])
+    # Compute ratios of examples for each category
+    source_category_ratios_per_domain = {}
+    source_total_examples_per_domain = {}
+    val_split_length_per_domain = {}
+    for source_domain, domain_idx in DG_labels[target_domain].items():
+        '''
+        source_category_ratios_per_domain[source_domain] = {category_idx: len(examples_list) for category_idx, examples_list in source_examples_per_domain[source_domain].items()}
+        source_total_examples_per_domain[source_domain] = sum(source_category_ratios_per_domain[source_domain].values())
+        source_category_ratios_per_domain[source_domain] = { category_idx: c / source_total_examples_per_domain[source_domain] for category_idx, c in source_examples_per_domain[source_domain].items()}
+
+        # Build splits - we train only on the source domain (Art Painting)
+        # 20% of the training split used for validation
+        val_split_length_per_domain[source_domain] = { source_domain : total_examples * 0.2 for source_domain, total_examples in source_total_examples_per_domain.items() }
+        '''
+        source_category_ratios = {category_idx: len(examples_list) for category_idx, examples_list in source_examples_per_domain[source_domain].items()}
+        source_total_examples = sum(source_category_ratios.values())
+        source_category_ratios = {category_idx: c / source_total_examples for category_idx, c in source_category_ratios.items()}
+
+        # Build splits - we train only on the source domain (Art Painting)
+        val_split_length = source_total_examples * 0.2 # 20% of the training split used for validation
+
+
+        for category_idx, examples_list in source_examples_per_domain[source_domain].items():
+            split_idx = round(source_category_ratios[category_idx] * val_split_length)
+            for i, example in enumerate(examples_list):
+                if i > split_idx:
+                    # each pair is [path_to_img, class_label, domain_label]
+                    train_examples.append([example, category_idx, domain_idx])
+                else:
+                    # each pair is [path_to_img, class_label, domain_label]
+                    val_examples.append([example, category_idx, domain_idx])
 
     for category_idx, examples_list in target_examples.items():
         for example in examples_list:
             # each pair is [path_to_img, class_label]
-            test_examples.append([example, category_idx])
+            test_examples.append([example, category_idx, 3])
+
+    random.shuffle(train_examples) #shuffle because will be all elements belonging to a domain, then all the elements belonging to the other domain and so on...
+    random.shuffle(val_examples)
+
 
     # Transforms
     # ResNet18 - ImageNet Normalization
@@ -157,12 +168,9 @@ def build_splits_baseline(opt):
     ])
 
     # Dataloaders
-    train_loader = DataLoader(PACSDatasetBaseline(train_examples, train_transform),
-                              batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=True)
-    val_loader = DataLoader(PACSDatasetBaseline(val_examples, eval_transform),
-                            batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
-    test_loader = DataLoader(PACSDatasetBaseline(test_examples, eval_transform),
-                             batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
+    train_loader = DataLoader(PACSDatasetBaseline_domgen(train_examples, train_transform),batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=True)
+    val_loader = DataLoader(PACSDatasetBaseline_domgen(val_examples, eval_transform),batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
+    test_loader = DataLoader(PACSDatasetBaseline_domgen(test_examples, eval_transform),batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
 
     return train_loader, val_loader, test_loader
 
