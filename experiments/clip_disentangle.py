@@ -92,13 +92,13 @@ class CLIPDisentangleExperiment: # See point 4. of the project
 
         reconstructor_loss = self.criterion_L2L(Rfg, Fg)
 
+
+        clip_loss = 0
         if(len(data) > 2 ): #if the data also contains the descriptions.
-            descr = data[3]
+            descr = data[2]
             tokenized_text = clip.tokenize(descr).to(self.device)
             text_features = self.clip_model.encode_text(tokenized_text)
             clip_loss = self.criterion_L2L(Fds, text_features)
-        else:
-            clip_loss = 0
 
         loss = self.w1*(category_loss + self.alpha*confuse_domain_loss) + self.w2*(domain_loss + self.alpha*confuse_category_loss) + self.w3*reconstructor_loss + self.clip*clip_loss
         loss.backward()
@@ -116,7 +116,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
                 x = x.to(self.device)
                 y = y.to(self.device)
 
-                (_, Cc,_, _, _, _) = self.model(x)
+                (_, Cc,_, _, _, _, _) = self.model(x)
                 loss += self.criterion_CEL(Cc, y)
                 pred = torch.argmax(Cc, dim=-1)
 

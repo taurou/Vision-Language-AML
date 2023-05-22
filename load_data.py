@@ -21,8 +21,8 @@ description_titles = ["Level of details: " , "Edges: " , "Color saturation: ", "
 def tokenize_description(item, description_titles):
     concat_descr = ""
     for idx, descr in enumerate(item):
-       concat_descr =  " ".join([concat_descr, description_titles[idx], descr+"."])
-    return concat_descr
+       concat_descr =  " ".join([concat_descr, description_titles[idx], descr]).replace(":", "").replace(",", "")
+    return ' '.join(concat_descr.split(' ')[:75]) #Limit the number of description words to 77
 
 def create_dict(json_descr):
     dict = {}
