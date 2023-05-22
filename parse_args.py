@@ -19,6 +19,7 @@ def parse_arguments():
     parser.add_argument('--data_path', type=str, default='data/PACS', help='Locate the PACS dataset on disk.')
 
     parser.add_argument('--cpu', action='store_true', help='If set, the experiment will run on the CPU.')
+    parser.add_argument('--dom_gen', default=True, action='store_false', help='If set, the experiment use domain generalization.')
     parser.add_argument('--test', action='store_true', help='If set, the experiment will skip training.')
     
     # Additional arguments can go below this line:
