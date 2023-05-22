@@ -71,7 +71,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
             x = x.to(self.device)
             domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device) 
 
-        (Fg, Cc, Cd, Ccd, Cdc, Rfg) = self.model(x)
+        (Fg, Cc, Cd, Ccd, Cdc, Rfg, _) = self.model(x)
 
         category_loss = 0 if targetDomain == True else self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
         
@@ -101,7 +101,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
                 x = x.to(self.device)
                 y = y.to(self.device)
 
-                (_, Cc,_, _, _, _) = self.model(x)
+                (_, Cc,_, _, _, _, _) = self.model(x)
                 loss += self.criterion_CEL(Cc, y)
                 pred = torch.argmax(Cc, dim=-1)
 
