@@ -1,163 +1,163 @@
 [
   {
     "image_name": "art_painting/horse/pic_221.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["Medium", "Smoothed,Soft,Quick,Light", "High", "colorful", "colorful", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/house/pic_322.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "smothed, evident, slow, delicate", "low", "colorful", "colorful", "no, four", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "art_painting/person/pic_448.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "linear, defined", "high", "colorful", "monochrome", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/person/pic_032.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "defined, evident, thin, slow", "low", "colorful", "monochrome, white", "no, two", "no", "no", "yes, not realistic"]
   },
   {
     "image_name": "art_painting/guitar/pic_127.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "blurred, linear, thin, light", "low", "colorful", "monochrome, red", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/horse/pic_106.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "defined, evident, thin, rapid", "low", "colorful", "monochrome, white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/giraffe/pic_060.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "blurred, delicate, thin, light", "low", "colorful", "monochrome, blue", "yes", "no", "no", "yes, not realistic"]
   },
   {
     "image_name": "art_painting/giraffe/pic_017.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "defined, energetic, rapid", "medium", "colorful", "monochrome, grey", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/person/pic_077.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "blurred, jagged, light, interwoven", "medium", "colorful", "colorful", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/horse/pic_218.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "smoothed, defined, slow, light", "low", "colorful", "monochrome, blue", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/horse/pic_035.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "smoothed, defined, interwoven", "low", "colorful", "monocrome, orange", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/dog/pic_368.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "smoothed, blurred, interwoven, light", "low", "colorful", "monochrome, green", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/dog/pic_233.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "blurred, jagged, slow, interwoven", "low", "colorful", "colorful", "no, two", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/dog/pic_241.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "smoothed, soft, light, slow", "low", "colorful", "colorful", "yes", "no", "uneven, flat", "no"]
   },
   {
     "image_name": "art_painting/dog/pic_002.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "smoothed, blurred, light, slow", "colorful", "colorful, blue, green", "yes", "no", "no", "painting strokes", "yes, not realistic"]
   },
   {
     "image_name": "art_painting/person/pic_398.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "smoothed, soft, thin, light", "medium", "colorful", "yes", "no", "no", "painting strokes", "yes, realistic"]
   },
   {
     "image_name": "art_painting/person/pic_056.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "smoothed, soft, light, thin", "low", "colorful", "colorful", "yes", "no", "painting, pencil strokes", "yes, realistic"]
   },
   {
     "image_name": "art_painting/person/pic_150.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "linear, defined, light, rapid", "low", "colorful", "monochrome, grey", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/person/pic_507.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "linear, defined, slow, rapid", "low", "colorful", "monochrome, blue", "no, two", "no", "painting strokes", "yes, realistic"]
   },
   {
     "image_name": "art_painting/house/pic_069.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "defined, jagged, slow, large", "low", "colorful", "monochrome, grey", "no, two", "no", "painting strokes", "yes, realistic"]
   },
   {
     "image_name": "art_painting/giraffe/pic_171.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "sharp, linear, rapid, wide", "high", "colorful", "monochrome, orange", "no, three", "no", "painting strokes", "yes, realistic"]
   },
   {
     "image_name": "art_painting/dog/pic_179.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred, jagged, light, rapid", "medium", "clorful", "monochrome, blue", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/giraffe/pic_098.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "linear, defined, light, rapid", "low", "colorful", "monochrome, grey", "yes", "no", "painting, pencil strokes", "no"]
   },
   {
     "image_name": "art_painting/horse/pic_060.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "smoothed, jagged, energetic, rapid", "medium", "colorful", "colorful", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/person/pic_534.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "sharp, evident, quick, rapid", "low", "colorful", "colorful", "no, two", "no", "painting, pencil strokes", "yes, realistic"]
   },
   {
     "image_name": "art_painting/giraffe/pic_093.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "smoothed, evident, light, interwoven", "low", "colorful", "colorful", "no, two", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/person/pic_303.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "sharp, evident, quick, rapid", "low", "colorful", "colorful", "no, three", "no", "painting, pencil strokes", "yes, realistic"]
   },
   {
     "image_name": "art_painting/elephant/pic_062.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "blurred, smoothed, light, slow", "low", "colorful", "monochrome, white", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/horse/pic_059.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "sharp, linear, quick, light", "medium", "colorful", "monochrome, blue", "yes", "no", "painting strokes", "yes, realistic"]
   },
   {
     "image_name": "art_painting/person/pic_298.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, linear, evident, energetic, rapid, thin", "high", "colorful", "colorful", "no, three", "no", "painting, pencil strokes", "yes, realistic"]
   },
   {
     "image_name": "art_painting/dog/pic_282.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "linear, evident, rapid, interwoven", "high", "colorful", "colorful", "yes", "no", "painting strokes", "yes, not realistic"]
   },
   {
     "image_name": "art_painting/giraffe/pic_009.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "sharp, defined, quick, heavy", "high", "colorful", "colorful", "yes", "no", "painting, pencil strokes", "no"]
   },
   {
     "image_name": "art_painting/horse/pic_025.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred, smoothed, rapid, interwoven", "low", "colorful", "monochrome, white", "no, two", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/horse/pic_114.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred, smoothed, rapid, interwoven", "medium", "colorful", "monochrome, white", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/person/pic_459.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred, jagged, smoothed, energetic, rapid, wide", "medium", "colorful", "colorful", "no, two", "no", "painting strokes", "yes, not realistic"]
   },
   {
     "image_name": "art_painting/elephant/pic_044.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "lunear, sharp, evident, light, interwoven", "low", "colorful", "monochrome, blue", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/dog/pic_150.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "linear, jagged, thin, light", "low", "colorful", "monochrome, brown", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/guitar/pic_148.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, quick, rapid", "high", "colorful", "colorful", "yes", "no", "painting, pencil strokes", "yes, not realistic"]
   },
   {
     "image_name": "art_painting/house/pic_075.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred, evident, interwoven, rapid, wide", "high", "colorful", "colorful", "no, many", "no", "painting strokes", "yes, not realistic"]
   },
   {
     "image_name": "art_painting/giraffe/pic_069.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "linear, sharp, evident, light", "low", "colorful", "colorful", "yes", "no", "painting strokes", "no"]
   },
   {
     "image_name": "art_painting/person/pic_479.jpg",

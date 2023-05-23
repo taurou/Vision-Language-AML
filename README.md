@@ -41,6 +41,7 @@ At this point you should be able to run and edit the base code provided.
 | | `baseline`: runs the experiment needed to reproduce the baseline (see point 1. of the project) |
 | | `domain_disentangle`: runs the domain disentanglement experiment (see point 2. of the project) |
 | | `clip_disentangle`: runs the disentanglement experiment using CLIP (see point 4. of the project) |
+
 | `--target_domain` | which visual domain to use as the target domain choosing among `art_painting`, `cartoon`, `sketch`, `photo` |
 | `--lr` | learning rate used in the optimization procedure. *Do not change it.* |
 | `--max_iterations` | total number of iterations of the optimization procedure. *Do not change it*, unless you have to reduce batch size. In that case, (max_iterations / batch_size) ratio shall be constant. |
@@ -51,6 +52,8 @@ At this point you should be able to run and edit the base code provided.
 | `--output_path` | points to the root directory where the _records/_ folder (containing the results of each experiments) will be created. |
 | `--data_path` | points to the directory where the PACS dataset is stored. See above (Getting Started >>> Dataset) to properly setup this argument. |
 | `--cpu` | if set, the experiment will run on the CPU. |
+| `--weights` | if set, the experiment will run on different weights than the default value. Format: --weights=[weight1, weight2, weight3, alpha, clip_weight] |
+| `--dom_gen` | if set, the experiment use domain generalization. |
 | `--test` | if set, the experiment will skip the training procedure and just run the evaluation on the test set. |
 
 ## Baseline Results (see point 1. of the project)
