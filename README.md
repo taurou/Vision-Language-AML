@@ -51,6 +51,8 @@ At this point you should be able to run and edit the base code provided.
 | `--output_path` | points to the root directory where the _records/_ folder (containing the results of each experiments) will be created. |
 | `--data_path` | points to the directory where the PACS dataset is stored. See above (Getting Started >>> Dataset) to properly setup this argument. |
 | `--cpu` | if set, the experiment will run on the CPU. |
+| `--weights` | if set, the experiment will run on different weights than the default value. Format: --weights=[weight1, weight2, weight3, alpha, clip_weight] |
+| `--dom_gen` | if set, the experiment use domain generalization. |
 | `--test` | if set, the experiment will skip the training procedure and just run the evaluation on the test set. |
 
 ## Baseline Results (see point 1. of the project)
