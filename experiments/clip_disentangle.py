@@ -149,7 +149,9 @@ class CLIPDisentangleExperiment: # See point 4. of the project
         count = 0
         loss = 0
         with torch.no_grad():
-            for x, y in loader:
+            for data in loader:
+                x = data[0]
+                y = data[1]
                 x = x.to(self.device)
                 y = y.to(self.device)
 

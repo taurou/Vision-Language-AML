@@ -304,7 +304,7 @@ def build_splits_clip_disentangle_domgen(opt):
 
     # Dataloaders
     train_loader = DataLoader(PACSDatasetCLIP_domgen(train_examples, train_transform, descriptions), batch_sampler=ConditionalBatchSampler(train_examples, descriptions, opt['batch_size'], shuffle=True), num_workers=opt['num_workers'])
-    val_loader = DataLoader(PACSDatasetCLIP_domgen(train_examples, eval_transform, descriptions), batch_sampler=ConditionalBatchSampler(train_examples, descriptions, opt['batch_size'], shuffle=True), num_workers=opt['num_workers'])
+    val_loader = DataLoader(PACSDatasetBaseline_domgen(train_examples, eval_transform),batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
     test_loader = DataLoader(PACSDatasetBaseline_domgen(test_examples, eval_transform),batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
 
     return train_loader, val_loader, test_loader

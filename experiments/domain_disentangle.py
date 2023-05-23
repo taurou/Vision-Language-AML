@@ -124,7 +124,9 @@ class DomainDisentangleExperiment: # See point 2. of the project
         count = 0
         loss = 0
         with torch.no_grad():
-            for x, y, _ in loader: # _ because here we don't need the domain labels. 
+            for data in loader: # _ because here we don't need the domain labels. 
+                x = data[0]
+                y = data[1]
                 x = x.to(self.device)
                 y = y.to(self.device)
 
