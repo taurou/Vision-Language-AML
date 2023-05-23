@@ -89,10 +89,10 @@ def read_lines_domgen(data_path, target_domain):
         category_idx = CATEGORIES[category_name]
         image_name = line[4]
         image_path = f'{data_path}/kfold/{target_domain}/{category_name}/{image_name}'
-        if category_idx not in source_examples.keys():
-            source_examples[category_idx] = [image_path]
+        if category_idx not in target_examples.keys():
+            target_examples[category_idx] = [image_path]
         else:
-            source_examples[category_idx].append(image_path)
+            target_examples[category_idx].append(image_path)
 
 
     return source_examples_per_domain, target_examples
@@ -194,13 +194,6 @@ class PACSDatasetCLIP_domgen(Dataset):
             return x, y, domain, self.descr_dict[key_dict]
         else:
             return x, y, domain
-        
-
-    def __getitem__(self, index):
-            img_path, y, domain = self.examples[index]
-            x = self.transform(Image.open(img_path).convert('RGB'))
-            return x, y, domain
-
 class ConditionalBatchSampler(Sampler):
     def __init__(self, examples, descr_dict, batch_size, shuffle=True):
         self.examples = examples
@@ -311,7 +304,7 @@ def build_splits_clip_disentangle_domgen(opt):
 
     # Dataloaders
     train_loader = DataLoader(PACSDatasetCLIP_domgen(train_examples, train_transform, descriptions), batch_sampler=ConditionalBatchSampler(train_examples, descriptions, opt['batch_size'], shuffle=True), num_workers=opt['num_workers'])
-    val_loader = DataLoader(PACSDatasetCLIP_domgen(train_examples, eval_transform), batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
+    val_loader = DataLoader(PACSDatasetCLIP_domgen(train_examples, eval_transform, descriptions), batch_sampler=ConditionalBatchSampler(train_examples, descriptions, opt['batch_size'], shuffle=True), num_workers=opt['num_workers'])
     test_loader = DataLoader(PACSDatasetBaseline_domgen(test_examples, eval_transform),batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
 
     return train_loader, val_loader, test_loader

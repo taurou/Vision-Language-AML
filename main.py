@@ -3,6 +3,7 @@ import sys
 import logging
 from parse_args import parse_arguments
 from load_data import build_splits_baseline, build_splits_domain_disentangle, build_splits_clip_disentangle
+from load_data_domgen import build_splits_domgen, build_splits_clip_disentangle_domgen
 from experiments.baseline import BaselineExperiment
 from experiments.domain_disentangle import DomainDisentangleExperiment
 from experiments.clip_disentangle import CLIPDisentangleExperiment
@@ -11,15 +12,30 @@ def setup_experiment(opt):
     
     if opt['experiment'] == 'baseline':
         experiment = BaselineExperiment(opt)
-        _, _, test_loader = data = build_splits_baseline(opt)
+        if not opt['dom_gen']:
+            data = build_splits_baseline(opt)
+            test_loader = data[2]
+        else:
+            data = build_splits_domgen(opt)
+            test_loader = data[2]     
         
     elif opt['experiment'] == 'domain_disentangle':
         experiment = DomainDisentangleExperiment(opt)
-        _, _, _, test_loader = data = build_splits_domain_disentangle(opt)
+        if not opt['dom_gen']:
+            data = build_splits_domain_disentangle(opt)
+            test_loader = data[3]
+        else:
+            data = build_splits_domgen(opt)
+            test_loader = data[2]     
 
     elif opt['experiment'] == 'clip_disentangle':
         experiment = CLIPDisentangleExperiment(opt)
-        _, _, _, test_loader = data = build_splits_clip_disentangle(opt)
+        if not opt['dom_gen']:
+            data = build_splits_clip_disentangle(opt)
+            test_loader = data[3]
+        else:
+            data = build_splits_clip_disentangle_domgen(opt)
+            test_loader = data[2]     
 
     else:
         raise ValueError('Experiment not yet supported.')
@@ -42,7 +58,7 @@ def main(opt):
 
         # Train loops
             if opt['experiment'] == 'baseline':
-                train_loader, validation_loader, _ = data
+                train_loader, validation_loader, test_loader = data
 
                 while iteration < opt['max_iterations']:
                     for data in train_loader:
@@ -69,7 +85,7 @@ def main(opt):
                             break
 
             elif opt['experiment'] == 'domain_disentangle':
-                source_train_loader, target_train_loader, source_val_loader, _ = data
+                source_train_loader, target_train_loader, source_val_loader, test_loader = data
                 target_train_loader_iter = iter(target_train_loader)
 
                 while iteration < opt['max_iterations']:
@@ -105,7 +121,7 @@ def main(opt):
                         if iteration > opt['max_iterations']:
                             break
             elif opt['experiment'] == 'clip_disentangle':
-                source_train_loader, target_train_loader, source_val_loader, _ = data
+                source_train_loader, target_train_loader, source_val_loader, test_loader = data
                 target_train_loader_iter = iter(target_train_loader)
 
                 while iteration < opt['max_iterations']:
