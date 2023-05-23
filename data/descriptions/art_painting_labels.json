@@ -161,162 +161,162 @@
   },
   {
     "image_name": "art_painting/person/pic_479.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "smoothed , delicate", "mid", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "art_painting/dog/pic_286.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred", "mid", "colorful", "colorful, sky", "yes", "no", "no", "yes realistic"]
   },
   {
     "image_name": "art_painting/giraffe/pic_130.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "soft, energic","high", "colorful", "colorful, violet", "yes", "no", "yes geometric", "yes unrealistic"]
   },
   {
     "image_name": "art_painting/dog/pic_264.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred smoothed soft thin", "low", "colorful", "grey", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/elephant/pic_103.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "blurred soft light thin", "low","colorful", "colorful yellow", "yes", "no",  "no", "no"]
   },
   {
     "image_name": "art_painting/house/pic_336.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "blurred smoothed soft thin","low", "colorful", "colorful", "yes", "no", "no", "yes realistic"]
   },
   {
     "image_name": "art_painting/dog/pic_170.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred delicate", "medium", "colorful", "colorful", "yes", "no", "no", "yes realistic"]
   },
   {
     "image_name": "art_painting/person/pic_569.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "soft Interwoven", "colorful", "colorful", "yes", "no", "no", "yes realistic", ""]
   },
   {
     "image_name": "art_painting/guitar/pic_081.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred smoothed soft wide","medium", "colorful", "colorful", "yes", "no", "no", "yes realistic", ""]
   },
   {
     "image_name": "art_painting/person/pic_462.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp thin slow", "low","colorful", "monochrome black", "yes", "no", "no", "yes realistic"]
   },
   {
     "image_name": "art_painting/person/pic_241.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred smoothed soft thin", "low", "colorful", "colorful", "yes", "no", "yes geometric", "yes realistic"]
   },
   {
     "image_name": "art_painting/horse/pic_186.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred smoothed soft thin", "high", "colorful", "colorful", "yes", "no", "no", "yes"]
   },
   {
     "image_name": "art_painting/guitar/pic_024.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", " blurred jagged quick energetic rapid", "high", "colorful", "colorful", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/person/pic_072.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred smoothed soft thin", "low", "colorful", "colorful", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/person/pic_504.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred smoothed soft thin", "low", "colorful", "colorful", "yes", "no", "no", "yes realistic"]
   },
   {
     "image_name": "art_painting/dog/pic_135.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "smoothed soft delicate slow", "medium", "colorful", "monochrome", "yes", "no", "no", "yes realistic"]
   },
   {
     "image_name": "art_painting/giraffe/pic_134.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "defined rapid", "high", "colorful", "colorful", "yes", "no", "yes fancy", "no"]
   },
   {
     "image_name": "art_painting/guitar/pic_118.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "smoothed delicate", "medium", "colorful", "colorful", "yes", "no", "yes musical notes", "no"]
   },
   {
     "image_name": "art_painting/dog/pic_084.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "blurred irregular quick thin", "medium", "colorful", "colorful", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/person/pic_104.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "smoothed delicate thin", "medium", "colorful", "colorful", "yes", "no", "yes bird", "yes realistic"]
   },
   {
     "image_name": "art_painting/person/pic_318.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "smoothed soft slow thin", "medium", "colorful", "colorful", "yes", " no", "no", "yes unrealistic"]
   },
   {
     "image_name": "art_painting/horse/pic_195.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "irregular jagged quick thin", "low", "colorful", "monochrome", "no eight", "yes symbols dense", "no", "yes"]
   },
   {
     "image_name": "art_painting/person/pic_042.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "smoothed soft delicate slow", "low","no greyscale", "monochrome gray", "yes", "no", "no", "yes realistic"]
   },
   {
     "image_name": "art_painting/house/pic_133.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "defined delicate", "high", "colorful", "white", "no eight", "no", "no", "yes unrealistic"]
   },
   {
     "image_name": "art_painting/person/pic_320.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "defined thin", "medium", "colorful", "colorful", "yes", "no", "no", "yes"]
   },
   {
     "image_name": "art_painting/guitar/pic_090.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "irregula jagged quick","medium", "colorful", "greyscale", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/horse/pic_184.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "defined smoothed delicate thin", "high", "colorful", "colorful", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/dog/pic_047.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "sharp defined", "high", "colorful","monochrome blue", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/horse/pic_085.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "blurred thin", "high", "colorful", "colorful", "no, five", "no", "yes trees", "yes, realistic"]
   },
   {
     "image_name": "art_painting/person/pic_146.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred delicate", "low", "colorful", "monochrome", "yes", "no", "no", "yes realistic"]
   },
   {
     "image_name": "art_painting/horse/pic_188.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "smoothed , delicate", "low", "colorful","monochrome",  "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/house/pic_061.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined thin", "high", "colorful", "colorful", "yes", "no", "yes flowers", "yes realistic"]
   },
   {
     "image_name": "art_painting/giraffe/pic_053.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "irregular blurred slow", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/person/pic_412.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "defined wide", "high", "colorful", "colorful", "yes", "no", "no", "yes realistic"]
   },
   {
     "image_name": "art_painting/giraffe/pic_092.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "defined smoothed light", "high", "colorful", "monochrome", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/giraffe/pic_070.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "defined smoothed thin", "medium", "colorful", "brown" , "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/giraffe/pic_173.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "defined smoothed slow", "high", "colorful", "colorful", "yes", "no", "no", "no"]
   },
   {
     "image_name": "art_painting/person/pic_416.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "blurred smoothed soft thin", "medium", "colorful", "colorful", "no, four", "no", "no", "yes,realistic"]
   },
   {
     "image_name": "art_painting/person/pic_097.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined thin", "medium", "colorful", "colorful", "no, sixteen","no", "yes spears", "yes realistic"]
   },
   {
     "image_name": "art_painting/house/pic_210.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined rapid", "high", "colorful", "colorful", "yes", "no", "yes flowers", "yes realistic"]
   }
 ]
