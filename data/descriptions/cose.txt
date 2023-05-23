@@ -1,4 +1,5 @@
-  Nitidi -> Sharp
+    Nitidi -> Sharp
+    Spessi -> Bold
     Sfocati -> Blurred                                      painting strokes
     Irregolari -> Irregular                                 painting, pencil strokes
     Lineari -> Linear                                       uneven, flat
