@@ -21,8 +21,8 @@ description_titles = ["Level of details: " , "Edges: " , "Color saturation: ", "
 def tokenize_description(item, description_titles):
     concat_descr = ""
     for idx, descr in enumerate(item):
-       concat_descr =  " ".join([concat_descr, description_titles[idx], descr+"."])
-    return concat_descr
+       concat_descr =  " ".join([concat_descr, description_titles[idx], descr]).replace("-", "").replace(":", "").replace(",", "") #We remove non-alphabetic chars because clip.tokenize counts them as a single word and the number of words grows quickly.
+    return ' '.join(concat_descr.split(' ')[:75]) #Limit the number of description words to 77 because of clip.tokenize limits. #TODO TOBETESTED at the moment limited to 75 because some documentation on the internet says that the beginning and the end of the string count as individual words, thus 75+2 = 77
 
 def create_dict(json_descr):
     dict = {}
