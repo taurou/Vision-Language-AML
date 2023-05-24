@@ -31,6 +31,6 @@ def parse_arguments():
     if not opt['cpu']:
         assert torch.cuda.is_available(), 'You need a CUDA capable device in order to run this experiment. See `--cpu` flag.'
 
-    opt['output_path'] = f'{opt["output_path"]}/record/{opt["experiment"]}_{opt["target_domain"]}'
+    opt['output_path'] = f'{opt["output_path"]}/record/{opt["experiment"]}_{opt["target_domain"]}{"" if not opt["dom_gen"] else "_domgen"}'
 
     return opt

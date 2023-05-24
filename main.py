@@ -125,14 +125,14 @@ def main(opt):
     # Test on BEST checkpoint
     experiment.load_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth')
     test_accuracy, _ = experiment.validate(test_loader)
-    logging.info(f'[TEST] Accuracy: {(100 * test_accuracy):.2f}')
-    print(f'[TEST] Accuracy: {(100 * test_accuracy):.2f}')
+    logging.info(f'[TEST] Best checkpoint Accuracy: {(100 * test_accuracy):.2f}')
+    print(f'[TEST] Best checkpoint Accuracy: {(100 * test_accuracy):.2f}')
     
     # Test on LAST checkpoint
     experiment.load_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth')
     test_accuracy, _ = experiment.validate(test_loader)
-    logging.info(f'[TEST] Accuracy: {(100 * test_accuracy):.2f}')
-    print(f'[TEST] Accuracy: {(100 * test_accuracy):.2f}')
+    logging.info(f'[TEST] Last checkpoint Accuracy: {(100 * test_accuracy):.2f}')
+    print(f'[TEST] Last checkpoint Accuracy: {(100 * test_accuracy):.2f}')
 
 if __name__ == '__main__':
 
