@@ -26,9 +26,9 @@ def label_art(domain_path):
 
 
 #domain_path= "./assigned_label/art_painting_to_label.txt"
-domain_path= "./assigned_label/cartoon_to_label.txt"
+#domain_path= "./assigned_label/cartoon_to_label.txt"
 #domain_path= "./assigned_label/photo_to_label.txt"
-#domain_path= "./assigned_label/sketch_to_label.txt"
+domain_path= "./assigned_label/sketch_to_label.txt"
 
 
 
