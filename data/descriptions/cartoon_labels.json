@@ -1,203 +1,204 @@
 [
   {
     "image_name": "cartoon/dog/pic_038.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Energetic", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_068.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_247.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "Sharp, Evident, Bold, homogeneus", "medium", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/horse/pic_081.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "no", "no", "yes, unrealistic"]
   },
   {
     "image_name": "cartoon/elephant/pic_047.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_286.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold, homogeneus", "medium", "colorful", "blu and white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/person/pic_448.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "linear, soft, Bold", "high", "colorful", "clorful", "no, three", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "cartoon/giraffe/pic_143.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, linear", "high", "colorful", "white", "no, two", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/house/pic_013.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold", "high", "colorful", "colorful", "yes", "no", "no", "yes, unrealistic"]
   },
   {
     "image_name": "cartoon/house/pic_340.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "Sharp, Evident, Bold, wide", "high", "colorful", "colorful", "no, two", "no", "no", "yes, unrealistic"]
   },
   {
     "image_name": "cartoon/giraffe/pic_341.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, linear", "megium", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/horse/pic_347.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, linear, defined", "high", "colorful", "white", "no, two", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/house/pic_089.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold, wide", "high", "colorful", "no", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_374.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold", "medium", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/house/pic_221.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold, wide", "high", "colorful", "colorful", "yes", "no", "no", "yes, unrealistic"]
   },
   {
     "image_name": "cartoon/house/pic_192.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, thin, soft", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/dog/pic_033.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold, smoothed", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_342.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold", "medium", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/dog/pic_373.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold, smoothed", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/giraffe/pic_094.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, linear", "high", "colorful", "white", "no, two", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_116.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/dog/pic_050.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold, smoothed", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/person/pic_397.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold, linear", "high", "colorful", "white", "yes", "no", "no", "yes, unrealistic"]
   },
   {
     "image_name": "cartoon/horse/pic_116.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Sharp, Evident, Bold", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/giraffe/pic_093.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "blurred, linear, thin, homogeneus", "medium", "colorful", "grey", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_102.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/dog/pic_203.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, sharp, Evident, Bold", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/house/pic_304.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, sharp", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/horse/pic_105.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, sharp", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_328.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_002.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_141.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/horse/pic_293.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, thin, quick", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_354.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/house/pic_263.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "high", "colorful", "colorful", "yes", "no", "no", "yes, unrealistic"]
   },
   {
     "image_name": "cartoon/dog/pic_348.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "text", "no", "no"]
   },
   {
     "image_name": "cartoon/dog/pic_135.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold", "high", "colorful", "nlue", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_497.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/horse/pic_035.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "high", "colorful", "white", "no, two", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/dog/pic_308.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, jagged", "high", "black and white", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/horse/pic_251.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, jagged", "high", "black and white", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/person/pic_037.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, thin", "high", "colorful", "blue", "yes", "no", "no", "no"]
+
   },
   {
     "image_name": "cartoon/guitar/pic_067.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/horse/pic_233.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "linear, Evident, Bold, homogeneus", "medium", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/person/pic_318.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold", "medium", "colorful", "white", "no, many", "text", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_183.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/dog/pic_444.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/giraffe/pic_170.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "linear, Evident, Bold, homogeneus", "high", "colorful", "white and green", "no, many", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_195.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "high", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/elephant/pic_074.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "linear, Evident, Bold, homogeneus", "medium", "colorful", "white", "yes", "no", "no", "no"]
   },
   {
     "image_name": "cartoon/dog/pic_161.jpg",

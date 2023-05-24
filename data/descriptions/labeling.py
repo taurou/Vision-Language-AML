@@ -8,8 +8,8 @@ def label_art(domain_path):
     with open(domain_path, "r") as art_file:
         art_lines = list(map(lambda l: l.split()[0], art_file.readlines()))
 
-    #start, end= 0, math.floor(len(art_lines)*1/2)                                           #Jacopo
-    start, end= math.ceil(len(art_lines)*1/2), len(art_lines)                              #Gabri
+    start, end= 0, math.floor(len(art_lines)*1/2)                                           #Jacopo
+    #start, end= math.ceil(len(art_lines)*1/2), len(art_lines)                              #Gabri
 
 
     for i, l in enumerate(art_lines[start:end]):
@@ -26,9 +26,9 @@ def label_art(domain_path):
 
 
 #domain_path= "./assigned_label/art_painting_to_label.txt"
-#domain_path= "./assigned_label/cartoon_to_label.txt"
+domain_path= "./assigned_label/cartoon_to_label.txt"
 #domain_path= "./assigned_label/photo_to_label.txt"
-domain_path= "./assigned_label/sketch_to_label.txt"
+#domain_path= "./assigned_label/sketch_to_label.txt"
 
 
 
