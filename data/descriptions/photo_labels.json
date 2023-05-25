@@ -1,202 +1,202 @@
 [
   {
     "image_name": "photo/guitar/n02676566_8309.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, linear", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/dog/n02106662_7960.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "jagged, evident, linear", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/person/253_0429.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, linear, defined", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/house/pic_137.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, linear", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/person/253_0071.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, linear, defined", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/elephant/n02503517_10075.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "irregular, evident, linear, soft", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/horse/105_0053.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "smoothed, linear, evident,thin", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/person/253_0331.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, linear, defined", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/house/pic_119.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, linear", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/house/pic_124.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, soft, linear", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/person/253_0153.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, linear, defined", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/guitar/n02676566_4189.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, homogeneus, linear, defined", "medium", "colorful", "colorful", "yes", "no", "no", "no"]
   },
   {
     "image_name": "photo/house/pic_098.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, soft, linear", "medium", "colorful", "blue", "yes", "no", "no", "no"]
   },
   {
     "image_name": "photo/dog/056_0027.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, defined, linear", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/giraffe/n02439033_9719.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, soft, linear", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/giraffe/084_0006.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, defined, linear", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/house/pic_282.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "blurred, soft, jagged", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/horse/n02374451_8526.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "soft, linear", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/person/253_0390.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, linear, defined", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/guitar/063_0078.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "evident, linear, defined", "medium", "colorful", "colorful", "yes", "no", "no", "no"]
   },
   {
     "image_name": "photo/person/253_0094.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, linear, defined", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/horse/n02374451_1234.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "soft, linear, evident", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/horse/105_0108.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "soft, linear, sharp, evident", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/person/253_0346.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "sharp, evident, linear, defined", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/house/pic_240.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined, sharp, evident, linear", "medium", "colorful", "colorful","yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/guitar/063_0038.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Defined, Evident", "high", "colorful", "colorful", "yes", "no", "yes, comics", "yes, realistic"]
   },
   {
     "image_name": "photo/elephant/n02503517_2993.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Defined, Evident", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/guitar/063_0026.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Defined, Evident", "high", "colorful", "monochrome, yellow", "no, two", "no", "no", "no"]
   },
   {
     "image_name": "photo/house/pic_093.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Defined, Evident, precise lines", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/guitar/063_0080.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["low", "smoothed", "low", "monochrome, white", "greyscale", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/guitar/n02676566_8618.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined, linear, Homogeneous","medium","monochrome, wood", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/horse/n02374451_15453.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined soft, homogeneus", "high", "brown and white", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/house/pic_265.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined, linear", "medium", "colorful",  "colorful, forest","yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/house/pic_080.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "defined, linear", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/person/253_0297.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/guitar/n03467517_12925.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined soft", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/house/pic_034.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined, linear", "medium", "colorful", "colorful, nature and sky", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/house/pic_252.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined, linear", "medium", "colorful, white and grey", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/giraffe/084_0052.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "Defined, Evident", "medium", "colorful, browns", "colorful, savana and sky", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/elephant/n02503517_10440.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Defined, Evident, homogeneus", "medium", "monochrome, grey", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/horse/105_0067.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined,smooth", "medium", "monochrome, white", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/dog/056_0028.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "Irregular, thin", "low", "monochrome, white", "monochrome, brown", "no, four", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/guitar/063_0055.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined, linear", "high", "colorful", "monochrome, white", "no, four", "no", "no", "no"]
   },
   {
     "image_name": "photo/horse/n02374451_15669.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "smoothed", "medium", "colorful", "colorful", "yes", "no","no", "yes, realistic"]
   },
   {
     "image_name": "photo/dog/056_0069.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["medium", "defined", "low", "monochrome, light brown", "dichrome, white and grey", "yes", "yes, dense", "no", "no"]
   },
   {
     "image_name": "photo/guitar/n02676566_7844.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined, soft", "medium", "colorful", "monochrome, light grey", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/person/253_0181.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "smoothed,thin", "medium", "colorful", "monochrome, white", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/person/253_0431.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "smoothed,thin", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/house/pic_037.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "defined, linear", "high", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   },
   {
     "image_name": "photo/person/253_0269.jpg",
-    "descriptions": ["", "", "", "", "", "", "", "", ""]
+    "descriptions": ["high", "smoothed,thin", "medium", "colorful", "colorful", "yes", "no", "no", "yes, realistic"]
   }
 ]
