@@ -49,7 +49,7 @@ class BaselineModel(nn.Module):
         return x
 
 class DomainDisentangleModel(nn.Module):
-    def __init__(self):
+    def __init__(self, opt):
         super(DomainDisentangleModel, self).__init__()
         self.feature_extractor = FeatureExtractor()
 
@@ -80,8 +80,11 @@ class DomainDisentangleModel(nn.Module):
             nn.BatchNorm1d(512),
             nn.ReLU()
         )
+        if not opt["dom_gen"]:
+            self.domain_classifier = nn.Linear(512, 2) #We consider 2 domains at the time. Source and target domain for the unsupervised learning
+        else:
+            self.domain_classifier = nn.Linear(512, 3) #We consider the 3 source domains.
 
-        self.domain_classifier = nn.Linear(512, 2) #We just consider 2 domains at the time. Source and target domain.
         self.category_classifier = nn.Linear(512, 7) #Just like the base model, we consider 7 categories
 
         self.reconstructor = nn.Sequential(

@@ -44,7 +44,7 @@ class BaselineExperiment: # See point 1. of the project
         return iteration, best_accuracy, total_train_loss
 
     def train_iteration(self, data):
-        x, y = data
+        x, y, _ = data #_ because it stores the information about the domain. It's not necessary here. 
         x = x.to(self.device)
         y = y.to(self.device)
 
@@ -63,7 +63,9 @@ class BaselineExperiment: # See point 1. of the project
         count = 0
         loss = 0
         with torch.no_grad():
-            for x, y in loader:
+            for data in loader: #_ because it stores the information about the domain. It's not necessary here. 
+                x = data[0]
+                y = data[1]
                 x = x.to(self.device)
                 y = y.to(self.device)
 

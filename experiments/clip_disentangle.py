@@ -18,7 +18,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
             param.requires_grad = False
 
         # Setup model
-        self.model = DomainDisentangleModel()
+        self.model = DomainDisentangleModel(opt)
         self.model.train()
         self.model.to(self.device)
         for param in self.model.parameters():
@@ -31,7 +31,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
         self.criterion_EL = EntropyLoss()
         self.criterion_L2L = L2Loss() 
 
-        #TODO Weights 
+        # Weights 
         self.w1 = opt["weights"][0]
         self.w2 = opt["weights"][1]
         self.w3 = opt["weights"][2]
@@ -67,44 +67,81 @@ class CLIPDisentangleExperiment: # See point 4. of the project
         return iteration, best_accuracy, total_train_loss
 
     def train_iteration(self, data, targetDomain = False):
+
         self.optimizer.zero_grad()
+        if not self.opt['dom_gen']:
+            if(targetDomain == False):
+                x = data[0]
+                y = data[1]
+                x = x.to(self.device)
+                y = y.to(self.device)           
+                domain_labels = torch.zeros(len(x), dtype=torch.long).to(self.device) 
+            else:
+                x = data[0]
+                x = x.to(self.device)
+                domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device) 
+
+            (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds) = self.model(x)
+
+            category_loss = 0 if targetDomain == True else self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
+            
+            confuse_domain_loss = -self.criterion_EL(Ccd)
+
+            domain_loss = self.criterion_CEL(Cd, domain_labels)
+
+            confuse_category_loss = -self.criterion_EL(Cdc)
+
+            reconstructor_loss = self.criterion_L2L(Rfg, Fg)
+
+            clip_loss = 0
+
+            if(len(data) > 2 ): #if the data also contains the descriptions.
+                descr = data[2]
+                tokenized_text = clip.tokenize(descr).to(self.device)
+                text_features = self.clip_model.encode_text(tokenized_text)
+                clip_loss = self.criterion_L2L(Fds, text_features)
+
+            loss = self.w1*(category_loss + self.alpha*confuse_domain_loss) + self.w2*(domain_loss + self.alpha*confuse_category_loss) + self.w3*reconstructor_loss + self.clip*clip_loss
+            loss.backward()
+            self.optimizer.step()
+
+            return loss.item()
         
-        if(targetDomain == False):
+        else: #Domain generalization setting
             x = data[0]
             y = data[1]
+            domain_labels = data[2]
             x = x.to(self.device)
             y = y.to(self.device)           
-            domain_labels = torch.zeros(len(x), dtype=torch.long).to(self.device) 
-        else:
-            x = data[0]
-            x = x.to(self.device)
-            domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device) 
+            domain_labels = domain_labels.to(self.device) 
 
-        (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds) = self.model(x)
+            (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds) = self.model(x)
 
-        category_loss = 0 if targetDomain == True else self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
+            category_loss = self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
+            
+            confuse_domain_loss = -self.criterion_EL(Ccd)
+
+            domain_loss = self.criterion_CEL(Cd, domain_labels)
+
+            confuse_category_loss = -self.criterion_EL(Cdc)
+
+            reconstructor_loss = self.criterion_L2L(Rfg, Fg)
+
+            clip_loss = 0
+
+            if(len(data) > 3 ): #if the data also contains the descriptions.
+                descr = data[3]
+                tokenized_text = clip.tokenize(descr).to(self.device)
+                text_features = self.clip_model.encode_text(tokenized_text)
+                clip_loss = self.criterion_L2L(Fds, text_features)
+
+            loss = self.w1*(category_loss + self.alpha*confuse_domain_loss) + self.w2*(domain_loss + self.alpha*confuse_category_loss) + self.w3*reconstructor_loss + self.clip*clip_loss
+            loss.backward()
+            self.optimizer.step()
+
+            return loss.item()
+
         
-        confuse_domain_loss = -self.criterion_EL(Ccd)
-
-        domain_loss = self.criterion_CEL(Cd, domain_labels)
-
-        confuse_category_loss = -self.criterion_EL(Cdc)
-
-        reconstructor_loss = self.criterion_L2L(Rfg, Fg)
-
-
-        clip_loss = 0
-        if(len(data) > 2 ): #if the data also contains the descriptions.
-            descr = data[2]
-            tokenized_text = clip.tokenize(descr).to(self.device)
-            text_features = self.clip_model.encode_text(tokenized_text)
-            clip_loss = self.criterion_L2L(Fds, text_features)
-
-        loss = self.w1*(category_loss + self.alpha*confuse_domain_loss) + self.w2*(domain_loss + self.alpha*confuse_category_loss) + self.w3*reconstructor_loss + self.clip*clip_loss
-        loss.backward()
-        self.optimizer.step()
-
-        return loss.item()
 
     def validate(self, loader):
         self.model.eval()
@@ -112,7 +149,9 @@ class CLIPDisentangleExperiment: # See point 4. of the project
         count = 0
         loss = 0
         with torch.no_grad():
-            for x, y in loader:
+            for data in loader:
+                x = data[0]
+                y = data[1]
                 x = x.to(self.device)
                 y = y.to(self.device)
 
