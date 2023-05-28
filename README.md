@@ -42,7 +42,7 @@ At this point you should be able to run and edit the base code provided.
 ## Base Command Line Arguments
 | Argument &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  | Description |
 | -------- | ----------- |
-| `--experiment` : which experiment to run chosen among the following: |
+| `--experiment` | which experiment to run chosen among the following: |
 | | `baseline` : runs the experiment needed to reproduce the baseline (see point 1. of the project) |
 | |`domain_disentangle` : runs the domain disentanglement experiment (see point 2. of the project) |
 | |`clip_disentangle` : runs the disentanglement experiment using CLIP (see point 4. of the project) |
