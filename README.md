@@ -43,9 +43,9 @@ At this point you should be able to run and edit the base code provided.
 | Argument &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  | Description |
 | -------- | ----------- |
 | `--experiment` | which experiment to run chosen among the following: |
-| `baseline`: runs the experiment needed to reproduce the baseline (see point 1. of the project) |
-| `domain_disentangle`: runs the domain disentanglement experiment (see point 2. of the project) |
-| `clip_disentangle`: runs the disentanglement experiment using CLIP (see point 4. of the project) |
+| `baseline` | runs the experiment needed to reproduce the baseline (see point 1. of the project) |
+| `domain_disentangle` | runs the domain disentanglement experiment (see point 2. of the project) |
+| `clip_disentangle` | runs the disentanglement experiment using CLIP (see point 4. of the project) |
 | `--target_domain` | which visual domain to use as the target domain choosing among `art_painting`, `cartoon`, `sketch`, `photo` |
 | `--lr` | learning rate used in the optimization procedure. *Do not change it.* |
 | `--max_iterations` | total number of iterations of the optimization procedure. *Do not change it*, unless you have to reduce batch size. In that case, (max_iterations / batch_size) ratio shall be constant. |
