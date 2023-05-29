@@ -146,6 +146,8 @@ def build_splits_domgen(opt):
             # each pair is [path_to_img, class_label]
             test_examples.append([example, category_idx, 3])
 
+    random.seed(0)
+
     random.shuffle(train_examples) #shuffle because will be all elements belonging to a domain, then all the elements belonging to the other domain and so on...
     random.shuffle(val_examples)
 
@@ -208,6 +210,7 @@ class ConditionalBatchSampler(Sampler):
         self.num_non_condition_batches = len(self.non_condition_indices) // batch_size
 
         if self.shuffle:
+            random.seed(0)
             random.shuffle(self.non_condition_indices)
             random.shuffle(self.condition_indices)
 
@@ -279,6 +282,7 @@ def build_splits_clip_disentangle_domgen(opt):
             # each pair is [path_to_img, class_label]
             test_examples.append([example, category_idx, 3])
 
+    random.seed(0)
     random.shuffle(train_examples) #shuffle because will be all elements belonging to a domain, then all the elements belonging to the other domain and so on...
     random.shuffle(val_examples)
 
@@ -304,7 +308,7 @@ def build_splits_clip_disentangle_domgen(opt):
 
     # Dataloaders
     train_loader = DataLoader(PACSDatasetCLIP_domgen(train_examples, train_transform, descriptions), batch_sampler=ConditionalBatchSampler(train_examples, descriptions, opt['batch_size'], shuffle=True), num_workers=opt['num_workers'])
-    val_loader = DataLoader(PACSDatasetBaseline_domgen(train_examples, eval_transform),batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
+    val_loader = DataLoader(PACSDatasetBaseline_domgen(val_examples, eval_transform),batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
     test_loader = DataLoader(PACSDatasetBaseline_domgen(test_examples, eval_transform),batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
 
     return train_loader, val_loader, test_loader
