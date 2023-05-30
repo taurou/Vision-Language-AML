@@ -219,6 +219,7 @@ class ConditionalBatchSampler(Sampler):
         self.num_non_condition_batches = len(self.non_condition_indices) // batch_size
 
         if self.shuffle:
+            random.seed(0)
             random.shuffle(self.non_condition_indices)
             random.shuffle(self.condition_indices)
 

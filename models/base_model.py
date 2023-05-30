@@ -193,22 +193,19 @@ class ClipDisentangleModel(nn.Module):
         Fcs = self.category_encoder(Fg)    #Fcs - Category Specific features
         Fds = self.domain_encoder(Fg)      #Fds - Domain Specific features
 
-        #Category disentanglement
-        #1st step(0): Train the category classifier 
+        #Category and domain disentanglement
+        #Train the category classifier 
         Cc = self.category_classifier(Fcs)  #Category encoded features + Category Classifier
-        
+        #Train the domain classifier 
         Cd = self.domain_classifier(Fds) 
 
-        #2nd step(1): confuse the (already trained) domain classifier
+        #confuse the domain classifier
         Ccd = self.domain_classifier(Fcs)   #Category encoded features + Domain Classifier - Predicted (fooled domain predictor) domains
-
-        #Domain disentanglement
-        #1st step(2): Train the domain predictor    
-        #Cd = self.domain_classifier(Fds)    #Domain encoded features + Domain Classifier
-        
-        #2nd step(3): confuse the (already trained) category classifier
+     
+        #confuse the category classifier
         Cdc = self.category_classifier(Fds)  #Category encoded features + Category Classifier - #Predicted (fooled category predictor) Categories
-        #Feature Reconstructor(4) - Reconstructing Fg from the Fcs and Fdc (category and domain specific features)
+
+        #Feature Reconstructor - Reconstructing Fg from the Fcs and Fdc (category and domain specific features)
         #Passing the concatenated features of category and domain along the columns to the reconstructor.
         Rfg = self.reconstructor(cat((Fcs, Fds), 1)) #Passing the concatenated features of category and domain along the columns to the reconstructor.
         

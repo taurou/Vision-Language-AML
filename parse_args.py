@@ -18,7 +18,7 @@ def parse_arguments():
     parser.add_argument('--data_path', type=str, default='data/PACS', help='Locate the PACS dataset on disk.')
 
     parser.add_argument('--cpu', action='store_true', help='If set, the experiment will run on the CPU.')
-    parser.add_argument('--weights', type=json.loads, default="[0.03, 0.03, 0.03, 0.11, 0.1]", help="if set, the experiment will run on different weights than the default value. Format: --weights=[weight1, weight2, weight3, alpha, clip_weight]") #w1, w2, w3, alpha
+    parser.add_argument('--weights', type=json.loads, default="[12, 0.1, 0.1, 1, 1]", help="if set, the experiment will run on different weights than the default value. Format: --weights=[weight1, weight2, weight3, alpha, clip_weight]") #w1, w2, w3, alpha, clip
     parser.add_argument('--dom_gen', action='store_true', help='If set, the experiment use domain generalization.')
     parser.add_argument('--test', action='store_true', help='If set, the experiment will skip training.')
     

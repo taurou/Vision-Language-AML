@@ -84,9 +84,9 @@ class CLIPDisentangleExperiment: # See point 4. of the project
             if(len(data) > 2 ): #if the data also contains the descriptions.
                 descr = data[2]
                 tokenized_text = clip.tokenize(descr).to(self.device)
-                text_features = self.clip_model.encode_text(tokenized_text)
-
-            (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds, Cf) = self.model(x, text_features)
+                (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds, Cf) = self.model(x, text_features)
+            else:
+                (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds, Cf) = self.model(x)
 
             category_loss = 0 if targetDomain == True else self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
             
@@ -118,8 +118,11 @@ class CLIPDisentangleExperiment: # See point 4. of the project
                 descr = data[3]
                 tokenized_text = clip.tokenize(descr).to(self.device)
                 text_features = self.clip_model.encode_text(tokenized_text)
+                (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds, Cf) = self.model(x, text_features)
+            else:
+                (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds, Cf) = self.model(x)
 
-            (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds, Cf) = self.model(x, text_features)
+
 
             category_loss = self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
             
