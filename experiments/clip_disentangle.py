@@ -2,6 +2,7 @@ import torch
 import clip
 from experiments.utils import *
 from models.base_model import DomainDisentangleModel
+
 class CLIPDisentangleExperiment: # See point 4. of the project
     
     def __init__(self, opt):
@@ -9,7 +10,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
         self.opt = opt
         self.device = torch.device('cpu' if opt['cpu'] else 'cuda:0')
 
-        #Setup clip
+        # Setup clip
         # Load CLIP model and freeze it
         self.clip_model, _ = clip.load('ViT-B/32', device='cpu') # load it first to CPU to ensure you're using fp32 precision.
         self.clip_model = self.clip_model.to(self.device)
@@ -38,7 +39,6 @@ class CLIPDisentangleExperiment: # See point 4. of the project
         self.alpha = opt["weights"][3]
         self.clip = opt["weights"][4] 
         print("CLIP parameters: \n","w1: ", self.w1, "w2: ", self.w2, "w3: ", self.w3, "alpha: ", self.alpha, "clip: ", self.clip)
-
 
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
@@ -140,8 +140,6 @@ class CLIPDisentangleExperiment: # See point 4. of the project
             self.optimizer.step()
 
             return loss.item()
-
-        
 
     def validate(self, loader):
         self.model.eval()
