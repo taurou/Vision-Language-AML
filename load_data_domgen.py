@@ -232,7 +232,7 @@ class ConditionalBatchSampler(Sampler):
 def build_splits_clip_disentangle_domgen(opt):
 
     load_descriptions = json.load(
-        open("./data/descriptions/all_labels.json", "r"))
+        open("./data/descriptions/all_labels_plus_assigned.json", "r"))
     descriptions = create_dict(load_descriptions)
 
     target_domain = opt['target_domain']
