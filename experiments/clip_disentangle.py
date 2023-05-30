@@ -1,7 +1,7 @@
 import torch
 import clip
 from experiments.utils import *
-from models.base_model import DomainDisentangleModel
+from models.base_model import ClipDisentangleModel
 class CLIPDisentangleExperiment: # See point 4. of the project
     
     def __init__(self, opt):
@@ -18,7 +18,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
             param.requires_grad = False
 
         # Setup model
-        self.model = DomainDisentangleModel(opt)
+        self.model = ClipDisentangleModel(opt)
         self.model.train()
         self.model.to(self.device)
         for param in self.model.parameters():
@@ -81,7 +81,12 @@ class CLIPDisentangleExperiment: # See point 4. of the project
                 x = x.to(self.device)
                 domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device) 
 
-            (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds) = self.model(x)
+            if(len(data) > 2 ): #if the data also contains the descriptions.
+                descr = data[2]
+                tokenized_text = clip.tokenize(descr).to(self.device)
+                text_features = self.clip_model.encode_text(tokenized_text)
+
+            (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds, Cf) = self.model(x, text_features)
 
             category_loss = 0 if targetDomain == True else self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
             
@@ -93,13 +98,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
 
             reconstructor_loss = self.criterion_L2L(Rfg, Fg)
 
-            clip_loss = 0
-
-            if(len(data) > 2 ): #if the data also contains the descriptions.
-                descr = data[2]
-                tokenized_text = clip.tokenize(descr).to(self.device)
-                text_features = self.clip_model.encode_text(tokenized_text)
-                clip_loss = self.criterion_L2L(Fds, text_features)
+            clip_loss = self.criterion_L2L(Fds, Cf) if Cf is not False else 0
 
             loss = self.w1*(category_loss + self.alpha*confuse_domain_loss) + self.w2*(domain_loss + self.alpha*confuse_category_loss) + self.w3*reconstructor_loss + self.clip*clip_loss
             loss.backward()
@@ -115,7 +114,12 @@ class CLIPDisentangleExperiment: # See point 4. of the project
             y = y.to(self.device)           
             domain_labels = domain_labels.to(self.device) 
 
-            (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds) = self.model(x)
+            if(len(data) > 3 ): #if the data also contains the descriptions.
+                descr = data[3]
+                tokenized_text = clip.tokenize(descr).to(self.device)
+                text_features = self.clip_model.encode_text(tokenized_text)
+
+            (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds, Cf) = self.model(x, text_features)
 
             category_loss = self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
             
@@ -127,13 +131,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
 
             reconstructor_loss = self.criterion_L2L(Rfg, Fg)
 
-            clip_loss = 0
-
-            if(len(data) > 3 ): #if the data also contains the descriptions.
-                descr = data[3]
-                tokenized_text = clip.tokenize(descr).to(self.device)
-                text_features = self.clip_model.encode_text(tokenized_text)
-                clip_loss = self.criterion_L2L(Fds, text_features)
+            clip_loss = self.criterion_L2L(Fds, Cf) if Cf is not False else 0
 
             loss = self.w1*(category_loss + self.alpha*confuse_domain_loss) + self.w2*(domain_loss + self.alpha*confuse_category_loss) + self.w3*reconstructor_loss + self.clip*clip_loss
             loss.backward()
@@ -155,7 +153,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
                 x = x.to(self.device)
                 y = y.to(self.device)
 
-                (_, Cc,_, _, _, _, _) = self.model(x)
+                (_, Cc,_, _, _, _, _, _) = self.model(x)
                 loss += self.criterion_CEL(Cc, y)
                 pred = torch.argmax(Cc, dim=-1)
 
