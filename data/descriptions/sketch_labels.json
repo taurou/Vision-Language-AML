@@ -1,0 +1,683 @@
+[
+  {
+    "image_name": "sketch/giraffe/n02439033_10839-5.png",
+    "descriptions": ["low", "bold, soft, linear", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_8526-4.png",
+    "descriptions": ["low", "bold, soft, linear", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03467517_21884-6.png",
+    "descriptions": ["low", "bold, soft, linear", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_2500-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_5527-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_10259-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_995-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n02676566_4058-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_6725-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/5951.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02106662_18405-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_6232-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_11845-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_564-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/5929.png",
+    "descriptions": ["low", "definite, linear, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/7421.png",
+    "descriptions": ["low", "definite, linear, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_6479-7.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_10795-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_8789-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02109525_16346-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_446-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_16948-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n02676566_9661-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_5035-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_9443-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_6799-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_569-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_11646-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_7729-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_14846-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_6650-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_14554-2.png",
+    "descriptions": ["low", "blurred, solid lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/5289.png",
+    "descriptions": ["low", "definite, sharp, thin", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_10439-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_651-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_8571-1.png",
+    "descriptions": ["low", "definite, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_18909-4.png",
+    "descriptions": ["low", "definite, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_5456-3.png",
+    "descriptions": ["low", "definite, solid lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_7729-4.png",
+    "descriptions": ["low", "blurred, solid lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02109525_12875-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/5968.png",
+    "descriptions": ["low", "definite, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_2478-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_9064-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_3388-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_10803-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02109525_8457-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_14148-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_13602-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_12792-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_3056-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_3401-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_4916-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_371-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_12485-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_12792-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_9472-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_4413-8.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_6479-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03467517_3203-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_5505-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_10669-9.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_10099-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n02676566_9577-2.png",
+    "descriptions": ["low", "blurred, heavy, solid lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_12792-7.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_13136-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_8875-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/7393.png",
+    "descriptions": ["low", "definite, sharp, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n02676566_6864-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_925-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_11059-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/7430.png",
+    "descriptions": ["low", "definite, sharp, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_628-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_10259-9.png",
+    "descriptions": ["low", "definite, solid lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n02676566_3360-1.png",
+    "descriptions": ["low", "blurred, heavy, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_12230-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_18192-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/8541.png",
+    "descriptions": ["low", "definite, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_9899-3.png",
+    "descriptions": ["low", "blurred, solid lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_10295-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_1508-7.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_4068-9.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_5216-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_10558-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_9472-8.png",
+    "descriptions": ["low", "blurred, heavy, solid lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02106662_8870-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_10098-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_15936-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_12174-6.png",
+    "descriptions": ["medium", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_262-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_3072-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03467517_17233-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02106662_8870-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_10279-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_1599-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_6852-6.png",
+    "descriptions": ["low", "irregular, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/7367.png",
+    "descriptions": ["low", "definite, thin lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/7601.png",
+    "descriptions": ["low", "definite, thin lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_446-3.png",
+    "descriptions": ["low", "definite, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_2706-8.png",
+    "descriptions": ["low", "definite, sharp", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_5527-5.png",
+    "descriptions": ["low", "definite, sharp", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_257-7.png",
+    "descriptions": ["low", "definite, sharp", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/5935.png",
+    "descriptions": ["low", "definite, thin lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_11458-4.png",
+    "descriptions": ["low", "definite, irregular", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_10440-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_6809-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_11894-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02106662_466-2.png",
+    "descriptions": ["low", "definite, irregular lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_9598-9.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_15453-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_13132-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02106662_7960-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/person/12128.png",
+    "descriptions": 
+    ["low", "definite, thin lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_2486-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_12225-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_10295-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_9827-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_925-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_6661-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_11215-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_5601-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/7660.png",
+    "descriptions": ["low", "definite, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_11114-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_2677-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_5887-3.png",
+    "descriptions": ["low", "irregular, solid lines, ", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_13049-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_929-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/7674.png",
+    "descriptions": ["low", "definite, irregular, thin lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/5960.png",
+    "descriptions": ["low", "definite, irregular, thin lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_6688-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_2486-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_10331-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_1984-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02106662_15858-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n02676566_6430-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_10558-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_3037-2.png",
+    "descriptions": ["low", "definite, irregular, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_14425-7.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02109525_7874-6.png",
+    "descriptions": ["medium", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n02676566_9577-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_10130-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_11894-7.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/7649.png",
+    "descriptions": ["low", "definite, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_3808-9.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n02676566_11573-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_9472-10.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n02676566_6704-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_14724-1.png",
+    "descriptions": ["low", "definite,irregular, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/house/8865.png",
+    "descriptions": ["low", "definite, thin lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_10439-8.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_6530-4.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_12792-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/7632.png",
+    "descriptions": ["low", "definite, thin lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n03272010_10441-3.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/house/8821.png",
+    "descriptions": ["low", "definite, thin lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/guitar/n02676566_2866-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_557-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_10669-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/house/8837.png",
+    "descriptions": ["low", "definite, thin lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_11715-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_5420-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/person/12164.png",
+    "descriptions": ["low", "definite, thin lines", "low", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/dog/n02103406_8004-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_10295-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_8292-1.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_16085-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_866-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_18192-5.png",
+    "descriptions": ["low", "definite,irregular, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/horse/n02374451_2372-6.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/elephant/n02503517_8265-2.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  },
+  {
+    "image_name": "sketch/giraffe/n02439033_14040-5.png",
+    "descriptions": ["low", "definite, solid lines", "medium", "black and white", "white", "yes", "no", "no", "no"]
+  }
+]

@@ -1,0 +1,23 @@
+    Nitidi -> Sharp
+    Spessi -> Bold
+    Sfocati -> Blurred                                      painting strokes
+    Irregolari -> Irregular                                 painting, pencil strokes
+    Lineari -> Linear                                       uneven, flat
+    Smussati -> Smoothed
+    Definiti -> Defined
+    Frastagliati -> Jagged
+    Taglienti -> Sharp-edged
+    Morbidi -> Soft
+    Evidenti -> Evident  
+    ###################
+    Ampie -> Wide
+    Sottili -> Thin
+    Veloci -> Quick
+    Lente -> Slow
+    Energetiche -> Energetic
+    Leggere -> Light
+    Pesanti -> Heavy
+    Intrecciate -> Interwoven
+    Rapide -> Rapid
+
+
