@@ -45,6 +45,7 @@ def setup_experiment(opt):
 def main(opt):
     (experiment, data, test_loader) = setup_experiment(opt)
 
+    # Train 
     if not opt['test']: # Skip training if '--test' flag is set
         iteration = 0
         best_accuracy = 0
@@ -54,15 +55,16 @@ def main(opt):
         if os.path.exists(f'{opt["output_path"]}/last_checkpoint.pth'):
             iteration, best_accuracy, total_train_loss = experiment.load_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth')
         else:
-            logging.info(opt)
+            logging.info(opt) # Log the hyperparameters, we save them in the checkpoint as well
 
         # Train loops
             if opt['experiment'] == 'baseline' or opt['dom_gen']:
-                train_loader, validation_loader, test_loader = data
+                train_loader, validation_loader, test_loader = data # Unpack data 
 
-                while iteration < opt['max_iterations']:
+
+                while iteration < opt['max_iterations']:    
+
                     for data in train_loader:
-
                         total_train_loss += experiment.train_iteration(data)
 
                         if iteration % opt['print_every'] == 0:
@@ -75,12 +77,14 @@ def main(opt):
                             logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
                             print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
 
-                            if val_accuracy >= best_accuracy:
+                            # We save the best checkpoint based on the validation accuracy
+                            if val_accuracy >= best_accuracy:   
                                 best_accuracy = val_accuracy
                                 experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+                            # We also save the last checkpoint
                             experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
 
-                        iteration += 1
+                        iteration += 1  # One iteration = one batch
                         if iteration > opt['max_iterations']:
                             break
 
@@ -136,7 +140,8 @@ def main(opt):
 
 if __name__ == '__main__':
 
-    opt = parse_arguments()
+    
+    opt = parse_arguments() 
 
     # Setup output directories
     os.makedirs(opt['output_path'], exist_ok=True)
@@ -146,5 +151,5 @@ if __name__ == '__main__':
     
     
 
-
+    # Run experiment
     main(opt)
