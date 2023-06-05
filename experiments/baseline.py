@@ -46,7 +46,10 @@ class BaselineExperiment: # See point 1. of the project
         return iteration, best_accuracy, total_train_loss
 
     def train_iteration(self, data): # It's the single iteration of the training loop
-        x, y, _ = data #_ because it stores the information about the domain. It's not necessary here. 
+        #x, y, _  = data #_ because it stores the information about the domain. It's not necessary here. 
+        x = data[0]
+        y = data[1]
+
         x = x.to(self.device) # x is the input image
         y = y.to(self.device) # y is the label
 

@@ -6,24 +6,27 @@ class DomainDisentangleExperiment: # See point 2. of the project
     
     def __init__(self, opt): #TODO 
         # Utils
-        self.opt = opt
+        self.opt = opt  # We store options dict (hyperparameters)
         self.device = torch.device('cpu' if opt['cpu'] else 'cuda:0')
 
         # Setup model
-        self.model = DomainDisentangleModel(opt)
+        self.model = DomainDisentangleModel(opt)    # See point 2. of the project
+                                                    # We create an istance of the class DomainDisentangleModel
         self.model.train()
         self.model.to(self.device)
+
         for param in self.model.parameters():
             param.requires_grad = True
 
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=opt['lr'])
 
         # Optimizers for all parts of the network.
-        self.criterion_CEL = torch.nn.CrossEntropyLoss()
+        self.criterion_CEL = torch.nn.CrossEntropyLoss()    
+        # Differently from the baseline, we have 3 different loss functions, in particular these two are added:
         self.criterion_EL = EntropyLoss()
         self.criterion_L2L = L2Loss() 
 
-        #Weights 
+        # Weights: w1, w2, w3, alpha. They are used to weight the three loss functions.
         self.w1 = opt["weights"][0]
         self.w2 = opt["weights"][1]
         self.w3 = opt["weights"][2]
@@ -58,27 +61,28 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
     def train_iteration(self, data, targetDomain = False):
 
-        self.optimizer.zero_grad()
+        self.optimizer.zero_grad()  # Reset gradients accumulation, otherwise they would be summed to the previous ones.
 
-        if not self.opt["dom_gen"]:
+        if not self.opt["dom_gen"]: 
         
             if(targetDomain == False):
-                x, y = data #x is the image tensor, y is the category label tensor.
+                x, y = data # x is the image tensor, y is the category label tensor.
                 x = x.to(self.device)
                 y = y.to(self.device)           
-                domain_labels = torch.zeros(len(x), dtype=torch.long).to(self.device) 
+                domain_labels = torch.zeros(len(x), dtype=torch.long).to(self.device) # Domain labels is a tensor of zeros, because we are in the source domain.  
             else:
-                x, _ = data #x is the image tensor, y is the category label tensor. The _ is here because we MUST NOT use the category label for the unsupervised learning of the target domain features
+                x, _ = data # x is the image tensor, y is the category label tensor. The _ is here because we MUST NOT use the category label for the unsupervised learning of the target domain features
                 x = x.to(self.device)
-                domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device) 
+                domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device)  # Domain labels is a tensor of ones, because we are in the target domain.
 
-            (Fg, Cc, Cd, Ccd, Cdc, Rfg, _) = self.model(x) #the _ because self.model also returns the features extracted by the domain encoder, not necessary here.
+            (Fg, Cc, Cd, Ccd, Cdc, Rfg, _) = self.model(x) # self.model(x) returns a tuple of 7 elements, which are the outputs of the 7 modules of the network of the class DomainDisentangleModel.
+            # The _ because self.model also returns the features extracted by the domain encoder, not necessary here.
 
             category_loss = 0 if targetDomain == True else self.criterion_CEL(Cc, y) #TODO rivedere ordine dei parametri
             
-            confuse_domain_loss = -self.criterion_EL(Ccd)
+            confuse_domain_loss = -self.criterion_EL(Ccd)           
 
-            domain_loss = self.criterion_CEL(Cd, domain_labels)
+            domain_loss = self.criterion_CEL(Cd, domain_labels)     # We use the cross entropy loss function to minimize the error of the domain classifier, so that it can distinguish between the two domains.
 
             confuse_category_loss = -self.criterion_EL(Cdc)
 
@@ -115,8 +119,6 @@ class DomainDisentangleExperiment: # See point 2. of the project
             self.optimizer.step()
 
             return loss.item()
-
-
 
     def validate(self, loader): #TODO Comment by tauro: during validation phase, we should pass only the source domain? Because, """""theoretically""""" it's the only data with labels and thus can be used to check on the model.
         self.model.eval()

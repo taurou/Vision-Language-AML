@@ -29,8 +29,8 @@ class BaselineModel(nn.Module):                     # Baseline model is a subcla
         self.feature_extractor = FeatureExtractor() # Feature extractor is a ResNet18 pretrained on ImageNet, it extracts features from the input image
         self.category_encoder = nn.Sequential(      # Category encoder is a sequential model made of 3 fully connected layers, in input it takes the output of the feature extractor
             nn.Linear(512, 512),                    # nn.Linear is a fully connected layer: first parameter is the number of input features, second parameter is the number of output features
-            nn.BatchNorm1d(512),                    # nn.BatchNorm1d is a batch normalization layer: it normalizes the output of the previous layer
-            nn.ReLU(),                              # nn.ReLU is a non-linear activation function
+            nn.BatchNorm1d(512),                    # nn.BatchNorm1d is a batch normalization layer: it normalizes the output of the previous layer 
+            nn.ReLU(),                              # nn.ReLU is a non-linear activation function. It is useful to introduce non-linearity in the network
 
             nn.Linear(512, 512),                    
             nn.BatchNorm1d(512),
@@ -46,7 +46,7 @@ class BaselineModel(nn.Module):                     # Baseline model is a subcla
     def forward(self, x):                           # We define the forward pass of the network: the input is the image tensor x
         x = self.feature_extractor(x)               # We extract the features from the input image
         x = self.category_encoder(x)                # We encode the useful features in the category space
-        x = self.classifier(x)                      # We classify the image in one of the 7 classes, the output is a vector of 7 elements
+        x = self.classifier(x)                      # We classify the image in one of the 7 classes, the output is a vector of 7 elements, each element is the score of the corresponding class, that is to say the p
         return x                                    # We return the output vector containing the class scores
 
 class DomainDisentangleModel(nn.Module):
@@ -81,9 +81,10 @@ class DomainDisentangleModel(nn.Module):
             nn.BatchNorm1d(512),
             nn.ReLU()
         )
-        if not opt["dom_gen"]:
+
+        if not opt["dom_gen"]:  # domain generalization not set
             self.domain_classifier = nn.Linear(512, 2) # We consider 2 domains at the time. Source and target domain for the unsupervised learning
-        else:
+        else:   # If we have domain generalization, we consider 3 domains at the time. Source, target and generalization domain
             self.domain_classifier = nn.Linear(512, 3) # We consider the 3 source domains.
 
         self.category_classifier = nn.Linear(512, 7)   # Just like the base model, we consider 7 categories
@@ -106,15 +107,16 @@ class DomainDisentangleModel(nn.Module):
     def forward(self, x):
         Fg = self.feature_extractor(x)      # extracted features, also called Fg in the paper
 
-        Fcs = self.category_encoder(Fg)    #Fcs - Category Specific features
         Fds = self.domain_encoder(Fg)      #Fds - Domain Specific features
+        Fcs = self.category_encoder(Fg)    #Fcs - Category Specific features
+        
 
         #Category disentanglement
         #1st step(0): Train the category classifier 
-        Cc = self.category_classifier(Fcs)  #Category encoded features + Category Classifier
-        
         Cd = self.domain_classifier(Fds) 
-
+        Cc = self.category_classifier(Fcs)  # Category encoded features + Category Classifier
+        
+    
         #2nd step(1): confuse the (already trained) domain classifier
         Ccd = self.domain_classifier(Fcs)   #Category encoded features + Domain Classifier - Predicted (fooled domain predictor) domains
 
@@ -162,6 +164,7 @@ class ClipDisentangleModel(nn.Module):
             nn.BatchNorm1d(512),
             nn.ReLU()
         )
+        
         if not opt["dom_gen"]:
             self.domain_classifier = nn.Linear(512, 2) #We consider 2 domains at the time. Source and target domain for the unsupervised learning
         else:
@@ -209,7 +212,7 @@ class ClipDisentangleModel(nn.Module):
         Rfg = self.reconstructor(cat((Fcs, Fds), 1)) #Passing the concatenated features of category and domain along the columns to the reconstructor.
         
         if clip_features is not False: 
-            Cf = self.CLIP_fullyconnected(clip_features) #Clip features passing through a fully connected layer
+            Cf = self.CLIP_fullyconnected(clip_features) # Clip features passing through a fully connected layer
         else:
             Cf = False
 
