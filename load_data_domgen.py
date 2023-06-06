@@ -53,9 +53,9 @@ class PACSDatasetBaseline_domgen(Dataset):
         return len(self.examples)
 
     def __getitem__(self, index):
-            img_path, y, domain = self.examples[index]
-            x = self.transform(Image.open(img_path).convert('RGB'))
-            return x, y, domain
+        img_path, y, domain = self.examples[index]
+        x = self.transform(Image.open(img_path).convert('RGB'))
+        return x, y, domain
 
 
 def read_lines_domgen(data_path, target_domain):
@@ -149,7 +149,7 @@ def build_splits_domgen(opt):
     random.seed(0)
 
     random.shuffle(train_examples) #shuffle because will be all elements belonging to a domain, then all the elements belonging to the other domain and so on...
-    random.shuffle(val_examples)
+    #random.shuffle(val_examples)
 
 
     # Transforms
@@ -284,7 +284,7 @@ def build_splits_clip_disentangle_domgen(opt):
 
     random.seed(0)
     random.shuffle(train_examples) #shuffle because will be all elements belonging to a domain, then all the elements belonging to the other domain and so on...
-    random.shuffle(val_examples)
+    #random.shuffle(val_examples)
 
 
     # Transforms

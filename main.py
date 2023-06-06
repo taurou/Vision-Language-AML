@@ -103,7 +103,7 @@ def main(opt):
 
                         #We compute once with the unlabeled target domain and once with the labeled source domain
                         total_train_loss += experiment.train_iteration(source_data, targetDomain = False)
-                        total_train_loss += experiment.train_iteration(target_data, targetDomain = True)
+                        total_train_loss += experiment.train_iteration(target_data, targetDomain = True) #Feed the model with the unlabeled samples of the target domain. (Unsupervised Domain Adaptation) 
 
                         if iteration % opt['print_every'] == 0:
                             logging.info(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
