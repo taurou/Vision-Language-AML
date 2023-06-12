@@ -84,6 +84,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
             if(len(data) > 2 ): #if the data also contains the descriptions.
                 descr = data[2]
                 tokenized_text = clip.tokenize(descr).to(self.device)
+                
                 text_features = self.clip_model.encode_text(tokenized_text)
                 (Fg, Cc, Cd, Ccd, Cdc, Rfg, Fds, Cf) = self.model(x, text_features)
             else:
