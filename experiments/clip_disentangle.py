@@ -40,6 +40,10 @@ class CLIPDisentangleExperiment: # See point 4. of the project
         print("CLIP parameters: \n","w1: ", self.w1, "w2: ", self.w2, "w3: ", self.w3, "alpha: ", self.alpha, "clip: ", self.clip)
 
 
+    def categoryClassifierTraining(self, train = False):
+        for param in self.model.category_classifier.parameters:
+            param.requires_grad = train
+
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
         checkpoint = {}
@@ -76,10 +80,12 @@ class CLIPDisentangleExperiment: # See point 4. of the project
                 x = x.to(self.device)
                 y = y.to(self.device)           
                 domain_labels = torch.zeros(len(x), dtype=torch.long).to(self.device) 
+                self.categoryClassifierTraining(train = True) #Enable the category classifier training since no loss will be computed
             else:
                 x = data[0]
                 x = x.to(self.device)
                 domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device) 
+                self.categoryClassifierTraining(train = False) #Disable the category classifier training since no loss will be computed
 
             if(len(data) > 2 ): #if the data also contains the descriptions.
                 descr = data[2]

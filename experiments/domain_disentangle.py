@@ -33,6 +33,11 @@ class DomainDisentangleExperiment: # See point 2. of the project
         self.alpha = opt["weights"][3]
         print("Domain Disentangle parameters: \n","w1: ", self.w1, "w2: ", self.w2, "w3: ", self.w3, "alpha: ", self.alpha)
 
+
+    def categoryClassifierTraining(self, train = False):
+        for param in self.model.category_classifier.parameters:
+            param.requires_grad = train
+
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
         checkpoint = {}
@@ -70,10 +75,12 @@ class DomainDisentangleExperiment: # See point 2. of the project
                 x = x.to(self.device)
                 y = y.to(self.device)           
                 domain_labels = torch.zeros(len(x), dtype=torch.long).to(self.device) # Domain labels is a tensor of zeros, because we are in the source domain.  
+                self.categoryClassifierTraining(train = True) #Enable the category classifier training since no loss will be computed
             else:
                 x, _ = data # x is the image tensor, y is the category label tensor. The _ is here because we MUST NOT use the category label for the unsupervised learning of the target domain features
                 x = x.to(self.device)
                 domain_labels = torch.ones(len(x), dtype=torch.long).to(self.device)  # Domain labels is a tensor of ones, because we are in the target domain.
+                self.categoryClassifierTraining(train = False) #Disable the category classifier training since no loss will be computed
 
             (Fg, Cc, Cd, Ccd, Cdc, Rfg, _) = self.model(x) # self.model(x) returns a tuple of 7 elements, which are the outputs of the 7 modules of the network of the class DomainDisentangleModel.
             # The _ because self.model also returns the features extracted by the domain encoder, not necessary here.
@@ -91,7 +98,6 @@ class DomainDisentangleExperiment: # See point 2. of the project
             loss = self.w1*(category_loss + self.alpha*confuse_domain_loss) + self.w2*(domain_loss + self.alpha*confuse_category_loss) + self.w3*reconstructor_loss
             loss.backward()
             self.optimizer.step()
-
             return loss.item()
 
         else: #Domain Generalization
