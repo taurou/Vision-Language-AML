@@ -1,5 +1,8 @@
 import torch
 import torch.nn as nn
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 class EntropyLoss(nn.Module):
     def __init__(self):
@@ -18,3 +21,18 @@ class L2Loss(nn.Module):
     def forward(self, f_star, f):
         L2loss = torch.norm(f_star - f)
         return L2loss
+    
+def plotValidation(x,y,opt ):
+    plt.figure()
+    plt.title("Validation accuracy")
+    colours=['b']
+    plt.xticks(x)  
+    plt.xlim([x[0], x[len(x)-1]])
+    plt.ylim(0,100)
+    plt.plot(x, y, label="valAcc", color=colours[0])
+    plt.xlabel("Iterations")   
+    #plt.legend([ "Validation acc" ])
+      
+    plt.savefig('%s/valAccuracy.png' % opt['output_path'], dpi=250 )
+    plt.close()
+

@@ -7,7 +7,7 @@ from load_data_domgen import build_splits_domgen, build_splits_clip_disentangle_
 from experiments.baseline import BaselineExperiment
 from experiments.domain_disentangle import DomainDisentangleExperiment
 from experiments.clip_disentangle import CLIPDisentangleExperiment
-
+from experiments.utils import plotValidation
 def setup_experiment(opt):
     
     if opt['experiment'] == 'baseline':
@@ -44,6 +44,10 @@ def setup_experiment(opt):
 
 def main(opt):
     (experiment, data, test_loader) = setup_experiment(opt)
+
+    val_y = []
+    val_x = []
+    
 
     # Train 
     if not opt['test']: # Skip training if '--test' flag is set
@@ -83,7 +87,9 @@ def main(opt):
                                 experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
                             # We also save the last checkpoint
                             experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
-
+                            val_x.append(iteration)
+                            val_y.append(100 * val_accuracy)
+                        
                         iteration += 1  # One iteration = one batch
                         if iteration > opt['max_iterations']:
                             break
@@ -120,11 +126,14 @@ def main(opt):
                                 best_accuracy = val_accuracy
                                 experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
                             experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+                            val_x.append(iteration)
+                            val_y.append(100 * val_accuracy)
 
                         iteration += 1
                         if iteration > opt['max_iterations']:
                             break
-    
+    if(len(val_y) != 0):
+        plotValidation(val_x, val_y, opt)
 
     # Test on BEST checkpoint
     experiment.load_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth')
