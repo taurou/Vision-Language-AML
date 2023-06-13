@@ -26,8 +26,8 @@ def plotValidation(x,y,opt ):
     plt.figure()
     plt.title("Validation accuracy")
     colours=['b']
-    plt.xticks(x)  
-    plt.xlim([x[0], x[len(x)-1]])
+    plt.xticks([0, 1000, 2000, 3000, 4000, 5000])  
+    plt.xlim([0, 5000])
     plt.ylim(0,100)
     plt.plot(x, y, label="valAcc", color=colours[0])
     plt.xlabel("Iterations")   
