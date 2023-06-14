@@ -206,11 +206,13 @@ class PACSDatasetCLIP(Dataset):
 
 
 class ConditionalBatchSampler(Sampler):
-    def __init__(self, examples, descr_dict, batch_size, shuffle=True):
+    def __init__(self, examples, descr_dict, batch_size, shuffle=True, noDescription = False):
         self.examples = examples
         self.batch_size = batch_size
         self.shuffle = shuffle
         self.descr_dict = descr_dict
+        
+        self.noDescription = noDescription
 
         self.indices = list(range(len(self.examples)))
         self.condition_indices = [idx for idx, item in enumerate(self.examples) if item[0].replace("data/PACS/kfold/", "") in descr_dict]
@@ -228,8 +230,9 @@ class ConditionalBatchSampler(Sampler):
             condition_batch_indices = self.condition_indices[i * self.batch_size:(i + 1) * self.batch_size]
             yield condition_batch_indices
 
-            non_condition_batch_indices = self.non_condition_indices[i * self.batch_size:(i + 1) * self.batch_size]
-            yield non_condition_batch_indices
+            if self.noDescription is True:
+                non_condition_batch_indices = self.non_condition_indices[i * self.batch_size:(i + 1) * self.batch_size]
+                yield non_condition_batch_indices
 
             #batch_indices = condition_batch_indices + non_condition_batch_indices
             #yield [self.indices[idx] for idx in batch_indices]
@@ -304,8 +307,8 @@ def build_splits_clip_disentangle(opt):
     ])
 
     # Dataloaders
-    source_train_loader = DataLoader(PACSDatasetCLIP(source_train_examples, train_transform, descriptions), batch_sampler=ConditionalBatchSampler(source_train_examples, descriptions, opt['batch_size'], shuffle=True), num_workers=opt['num_workers'])
-    target_train_loader = DataLoader(PACSDatasetCLIP(target_train_examples, train_transform, descriptions), batch_sampler=ConditionalBatchSampler(target_train_examples, descriptions, opt['batch_size'], shuffle=True), num_workers=opt['num_workers'])
+    source_train_loader = DataLoader(PACSDatasetCLIP(source_train_examples, train_transform, descriptions), batch_sampler=ConditionalBatchSampler(source_train_examples, descriptions, opt['batch_size'], shuffle=True, noDescription=opt["no_descr"]), num_workers=opt['num_workers'])
+    target_train_loader = DataLoader(PACSDatasetCLIP(target_train_examples, train_transform, descriptions), batch_sampler=ConditionalBatchSampler(target_train_examples, descriptions, opt['batch_size'], shuffle=True, noDescription=opt["no_descr"]), num_workers=opt['num_workers'])
     source_val_loader = DataLoader(PACSDatasetBaseline(source_val_examples, eval_transform), batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
     test_loader = DataLoader(PACSDatasetBaseline(target_test_examples, eval_transform), batch_size=opt['batch_size'], num_workers=opt['num_workers'], shuffle=False)
 
