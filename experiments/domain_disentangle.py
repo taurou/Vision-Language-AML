@@ -35,8 +35,9 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
 
     def categoryClassifierTraining(self, train = False):
-        for param in self.model.category_classifier.parameters():
-            param.requires_grad = train
+        if self.opt["disable_classifier"]:
+            for param in self.model.category_classifier.parameters():
+                param.requires_grad = train
 
     def save_checkpoint(self, path, iteration, best_accuracy, total_train_loss):
         
