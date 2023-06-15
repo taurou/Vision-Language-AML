@@ -3,8 +3,8 @@ import argparse
 import json
 import sys
 
-experiments=['domain_disentangle', 'clip_disentangle']
-targets=['cartoon', 'sketch', 'photo']
+experiments=[, 'clip_disentangle','domain_disentangle']
+targets=[ 'sketch','cartoon','photo']
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--w', type=str, help='Vector argument')
@@ -16,16 +16,14 @@ if not args.w:
 else:
     weights = args.w
 
-
-for experiment in experiments:
-    for target in targets:
+for target in targets:
+    for experiment in experiments:
         args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target,'--weights',weights]
         subprocess.run(args1, check=True)
 
 #DOMGEN
-
-for experiment in experiments:
-    for target in targets:
+for target in targets:
+    for experiment in experiments:
         args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target,'--dom_gen','--weights',weights]
         subprocess.run(args1, check=True)
 
