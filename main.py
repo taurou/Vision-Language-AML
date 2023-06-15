@@ -7,6 +7,7 @@ from load_data_domgen import build_splits_domgen, build_splits_clip_disentangle_
 from experiments.baseline import BaselineExperiment
 from experiments.domain_disentangle import DomainDisentangleExperiment
 from experiments.clip_disentangle import CLIPDisentangleExperiment
+from experiments.utils import plotValidation
 
 def setup_experiment(opt):
     
@@ -45,6 +46,11 @@ def setup_experiment(opt):
 def main(opt):
     (experiment, data, test_loader) = setup_experiment(opt)
 
+    val_y = []
+    val_x = []
+    best_iteration = 0
+    
+
     # Train 
     if not opt['test']: # Skip training if '--test' flag is set
         iteration = 0
@@ -78,12 +84,15 @@ def main(opt):
                             print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
 
                             # We save the best checkpoint based on the validation accuracy
-                            if val_accuracy >= best_accuracy and iteration > 500:   
+                            if val_accuracy >= best_accuracy and iteration > 500:    
                                 best_accuracy = val_accuracy
+                                best_iteration = iteration
                                 experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
                             # We also save the last checkpoint
                             experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
-
+                            val_x.append(iteration)
+                            val_y.append(100 * val_accuracy)
+                        
                         iteration += 1  # One iteration = one batch
                         if iteration > opt['max_iterations']:
                             break
@@ -118,18 +127,24 @@ def main(opt):
 
                             if val_accuracy > best_accuracy and iteration > 500:
                                 best_accuracy = val_accuracy
+                                best_iteration = iteration
                                 experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
                             experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+                            val_x.append(iteration)
+                            val_y.append(100 * val_accuracy)
 
                         iteration += 1
                         if iteration > opt['max_iterations']:
                             break
-    
+    if(len(val_y) != 0):
+        plotValidation(val_x, val_y, opt)
 
     # Test on BEST checkpoint
     experiment.load_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth')
     test_accuracy, _ = experiment.validate(test_loader)
+    logging.info(f'[TEST] Best checkpoint iteration: #{best_iteration} Best accuracy: {(100 * best_accuracy):.2f}')
     logging.info(f'[TEST] Best checkpoint Accuracy: {(100 * test_accuracy):.2f}')
+    print(f'[TEST] Best checkpoint iteration: #{best_iteration} Best accuracy: {(100 * best_accuracy):.2f}')
     print(f'[TEST] Best checkpoint Accuracy: {(100 * test_accuracy):.2f}')
     
     # Test on LAST checkpoint
