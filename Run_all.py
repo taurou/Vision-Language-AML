@@ -3,7 +3,7 @@ import argparse
 import json
 import sys
 
-experiments=[, 'clip_disentangle','domain_disentangle']
+experiments=['clip_disentangle','domain_disentangle']
 targets=[ 'sketch','cartoon','photo']
 
 parser = argparse.ArgumentParser()
