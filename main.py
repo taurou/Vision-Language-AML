@@ -78,7 +78,7 @@ def main(opt):
                             print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
 
                             # We save the best checkpoint based on the validation accuracy
-                            if val_accuracy >= best_accuracy:   
+                            if val_accuracy >= best_accuracy and iteration > 500:   
                                 best_accuracy = val_accuracy
                                 experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
                             # We also save the last checkpoint
@@ -116,7 +116,7 @@ def main(opt):
                             logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
                             print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
 
-                            if val_accuracy > best_accuracy:
+                            if val_accuracy > best_accuracy and iteration > 500:
                                 best_accuracy = val_accuracy
                                 experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
                             experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
