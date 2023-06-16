@@ -146,7 +146,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
 
         
 
-    def validate(self, loader):
+    def validate(self, loader, validation = False):
         self.model.eval()
         accuracy = 0
         count = 0
@@ -158,8 +158,9 @@ class CLIPDisentangleExperiment: # See point 4. of the project
                 x = x.to(self.device)
                 y = y.to(self.device)
 
-                (_, Cc,_, _, _, _, _, _) = self.model(x)
+                (Fg, Cc,_, _, _, Rfg, _, _) = self.model(x)
                 loss += self.criterion_CEL(Cc, y)
+                reconctructorLoss = self.criterion_L2L(Fg,Rfg)
                 pred = torch.argmax(Cc, dim=-1)
 
                 accuracy += (pred == y).sum().item()
@@ -167,7 +168,10 @@ class CLIPDisentangleExperiment: # See point 4. of the project
 
         mean_accuracy = accuracy / count
         mean_loss = loss / count
+        mean_reconstructorLoss = reconctructorLoss / count
         self.model.train()
-        return mean_accuracy, mean_loss
-
+        if validation:
+            return mean_accuracy, mean_loss, mean_reconstructorLoss
+        else:
+            return mean_accuracy, mean_loss
     

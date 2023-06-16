@@ -15,7 +15,7 @@ CATEGORIES = {
     'person': 6,
 }
 
-description_titles = ["Level of details: " , "Edges: " , "Color saturation: ", "Color shades: ","Background: " ,"Single instance: " , "Text: " , "Texture: ",  "Perspective: " ]
+description_titles = ["Level of details:" , "Edges:" , "Color saturation:", "Color shades:","Background:" ,"Single instance:" , "Text:" , "Texture:",  "Perspective:" ]
 
 
 def tokenize_description(item, description_titles):
@@ -27,7 +27,8 @@ def tokenize_description(item, description_titles):
 def create_dict(json_descr):
     dict = {}
     for item in json_descr:
-        dict[item["image_name"]] = tokenize_description(item["descriptions"], description_titles)
+        description = tokenize_description(item["descriptions"], description_titles).strip()
+        dict[item["image_name"]] = description
     return dict
 
 class PACSDatasetBaseline(Dataset):

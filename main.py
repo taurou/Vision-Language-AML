@@ -55,6 +55,7 @@ def main(opt):
     if not opt['test']: # Skip training if '--test' flag is set
         iteration = 0
         best_accuracy = 0
+        best_reconstructor_loss = 0
         total_train_loss = 0
 
         # Restore last checkpoint
@@ -64,78 +65,113 @@ def main(opt):
             logging.info(opt) # Log the hyperparameters, we save them in the checkpoint as well
 
         # Train loops
-            if opt['experiment'] == 'baseline' or opt['dom_gen']:
-                train_loader, validation_loader, test_loader = data # Unpack data 
+        if opt['experiment'] == 'baseline':
+            train_loader, validation_loader, test_loader = data # Unpack data 
 
 
-                while iteration < opt['max_iterations']:    
+            while iteration < opt['max_iterations']:    
 
-                    for data in train_loader:
-                        total_train_loss += experiment.train_iteration(data)
+                for data in train_loader:
+                    total_train_loss += experiment.train_iteration(data)
 
-                        if iteration % opt['print_every'] == 0:
-                            logging.info(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
-                            print(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
-                        
-                        if iteration % opt['validate_every'] == 0:
-                            # Run validation
-                            val_accuracy, val_loss = experiment.validate(validation_loader)
-                            logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
-                            print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+                    if iteration % opt['print_every'] == 0:
+                        logging.info(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+                        print(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+                    
+                    if iteration % opt['validate_every'] == 0:
+                        # Run validation
+                        val_accuracy, val_loss = experiment.validate(validation_loader)
+                        logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+                        print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
 
-                            # We save the best checkpoint based on the validation accuracy
-                            if val_accuracy >= best_accuracy and iteration > 500:    
-                                best_accuracy = val_accuracy
-                                best_iteration = iteration
-                                experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
-                            # We also save the last checkpoint
-                            experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
-                            val_x.append(iteration)
-                            val_y.append(100 * val_accuracy)
-                        
-                        iteration += 1  # One iteration = one batch
-                        if iteration > opt['max_iterations']:
-                            break
+                        # We save the best checkpoint based on the validation accuracy
+                        if val_accuracy >= best_accuracy and iteration > 500:    
+                            best_accuracy = val_accuracy
+                            best_iteration = iteration
+                            experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+                        # We also save the last checkpoint
+                        experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+                        val_x.append(iteration)
+                        val_y.append(100 * val_accuracy)
+                    
+                    iteration += 1  # One iteration = one batch
+                    if iteration > opt['max_iterations']:
+                        break
 
-            elif opt['experiment'] != 'baseline' and not opt['dom_gen']:
-                source_train_loader, target_train_loader, source_val_loader, test_loader = data
-                target_train_loader_iter = iter(target_train_loader)
+        elif opt['experiment'] != 'baseline' and opt['dom_gen']:
+            train_loader, validation_loader, test_loader = data # Unpack data 
 
-                while iteration < opt['max_iterations']:
-                    for source_data in source_train_loader:
-                        try:
-                            target_data = next(target_train_loader_iter)
-                        except StopIteration:
-                            # Restarting the iterator if the source loader is bigger
-                            target_train_loader_iter = iter(target_train_loader)
-                            target_data = next(target_train_loader_iter)
 
-                        #We compute once with the unlabeled target domain and once with the labeled source domain
-                        total_train_loss += experiment.train_iteration(source_data, targetDomain = False)
-                        total_train_loss += experiment.train_iteration(target_data, targetDomain = True) #Feed the model with the unlabeled samples of the target domain. (Unsupervised Domain Adaptation) 
+            while iteration < opt['max_iterations']:    
 
-                        if iteration % opt['print_every'] == 0:
-                            logging.info(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
-                            print(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+                for data in train_loader:
+                    total_train_loss += experiment.train_iteration(data)
 
-                        
-                        if iteration % opt['validate_every'] == 0:
-                            # Run validation
-                            val_accuracy, val_loss = experiment.validate(source_val_loader)
-                            logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
-                            print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+                    if iteration % opt['print_every'] == 0:
+                        logging.info(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+                        print(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+                    
+                    if iteration % opt['validate_every'] == 0:
+                        # Run validation
+                        val_accuracy, val_loss, val_reconstructor_loss = experiment.validate(validation_loader, validation = True)
+                        logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+                        print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
 
-                            if val_accuracy > best_accuracy and iteration > 500:
-                                best_accuracy = val_accuracy
-                                best_iteration = iteration
-                                experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
-                            experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
-                            val_x.append(iteration)
-                            val_y.append(100 * val_accuracy)
+                        # We save the best checkpoint based on the validation accuracy
+                        if val_reconstructor_loss <= best_reconstructor_loss and iteration > 500:    
+                            best_reconstructor_loss = val_reconstructor_loss
+                            best_iteration = iteration
+                            experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+                        # We also save the last checkpoint
+                        experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+                        val_x.append(iteration)
+                        val_y.append(val_reconstructor_loss)
+                    
+                    iteration += 1  # One iteration = one batch
+                    if iteration > opt['max_iterations']:
+                        break
 
-                        iteration += 1
-                        if iteration > opt['max_iterations']:
-                            break
+        elif opt['experiment'] != 'baseline' and not opt['dom_gen']:
+            source_train_loader, target_train_loader, source_val_loader, test_loader = data
+            target_train_loader_iter = iter(target_train_loader)
+
+            while iteration < opt['max_iterations']:
+                for source_data in source_train_loader:
+                    try:
+                        target_data = next(target_train_loader_iter)
+                    except StopIteration:
+                        # Restarting the iterator if the source loader is bigger
+                        target_train_loader_iter = iter(target_train_loader)
+                        target_data = next(target_train_loader_iter)
+
+                    #We compute once with the unlabeled target domain and once with the labeled source domain
+                    total_train_loss += experiment.train_iteration(source_data, targetDomain = False)
+                    total_train_loss += experiment.train_iteration(target_data, targetDomain = True) #Feed the model with the unlabeled samples of the target domain. (Unsupervised Domain Adaptation) 
+
+                    if iteration % opt['print_every'] == 0:
+                        logging.info(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+                        print(f'[TRAIN - {iteration}] Loss: {total_train_loss / (iteration + 1)}')
+
+                    
+                    if iteration % opt['validate_every'] == 0:
+                        # Run validation
+                        val_accuracy, val_loss, val_reconstructor_loss = experiment.validate(validation_loader, validation = True)
+                        logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+                        print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+
+                        # We save the best checkpoint based on the validation accuracy
+                        if val_reconstructor_loss <= best_reconstructor_loss and iteration > 500:    
+                            best_reconstructor_loss = val_reconstructor_loss
+                            best_iteration = iteration
+                            experiment.save_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+                        # We also save the last checkpoint
+                        experiment.save_checkpoint(f'{opt["output_path"]}/last_checkpoint.pth', iteration, best_accuracy, total_train_loss)
+                        val_x.append(iteration)
+                        val_y.append(val_reconstructor_loss)
+
+                    iteration += 1
+                    if iteration > opt['max_iterations']:
+                        break
     if(len(val_y) != 0):
         plotValidation(val_x, val_y, opt)
 

@@ -120,7 +120,7 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
             return loss.item()
 
-    def validate(self, loader): #TODO Comment by tauro: during validation phase, we should pass only the source domain? Because, """""theoretically""""" it's the only data with labels and thus can be used to check on the model.
+    def validate(self, loader, validation = False): #TODO Comment by tauro: during validation phase, we should pass only the source domain? Because, """""theoretically""""" it's the only data with labels and thus can be used to check on the model.
         self.model.eval()
         accuracy = 0
         count = 0
@@ -132,8 +132,9 @@ class DomainDisentangleExperiment: # See point 2. of the project
                 x = x.to(self.device)
                 y = y.to(self.device)
 
-                (_, Cc,_, _, _, _, _) = self.model(x) #The series of _ here is used because the only parameter we need are the predicted categories.
+                (Fg, Cc,_, _, _, Rfg, _) = self.model(x) #The series of _ here is used because the only parameter we need are the predicted categories.
                 loss += self.criterion_CEL(Cc, y)
+                reconctructorLoss = self.criterion_L2L(Fg,Rfg)
                 pred = torch.argmax(Cc, dim=-1)
 
                 accuracy += (pred == y).sum().item()
@@ -141,7 +142,11 @@ class DomainDisentangleExperiment: # See point 2. of the project
 
         mean_accuracy = accuracy / count
         mean_loss = loss / count
+        mean_reconstructorLoss = reconctructorLoss / count
         self.model.train()
-        return mean_accuracy, mean_loss
+        if validation:
+            return mean_accuracy, mean_loss, mean_reconstructorLoss
+        else:
+            return mean_accuracy, mean_loss
 
     
