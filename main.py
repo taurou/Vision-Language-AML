@@ -155,7 +155,7 @@ def main(opt):
                     
                     if iteration % opt['validate_every'] == 0:
                         # Run validation
-                        val_accuracy, val_loss, val_reconstructor_loss = experiment.validate(validation_loader, validation = True)
+                        val_accuracy, val_loss, val_reconstructor_loss = experiment.validate(source_val_loader, validation = True)
                         logging.info(f'[VAL - {iteration}] Loss: {val_loss} | RecLoss: {val_reconstructor_loss}')
                         print(f'[VAL - {iteration}] Loss: {val_loss} | RecLoss: {val_reconstructor_loss}')
 
