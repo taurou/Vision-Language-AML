@@ -100,7 +100,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
 
             reconstructor_loss = self.criterion_L2L(Rfg, Fg)
 
-            clip_loss = self.criterion_L2L(Fds, Cf) if Cf is not False else 0
+            clip_loss = 0 if Cf is False else self.criterion_L2L(Fds, Cf)
 
             loss = self.w1*(category_loss + self.alpha*confuse_domain_loss) + self.w2*(domain_loss + self.alpha*confuse_category_loss) + self.w3*reconstructor_loss + self.clip*clip_loss
             loss.backward()
@@ -136,7 +136,7 @@ class CLIPDisentangleExperiment: # See point 4. of the project
 
             reconstructor_loss = self.criterion_L2L(Rfg, Fg)
 
-            clip_loss = self.criterion_L2L(Fds, Cf) if Cf is not False else 0
+            clip_loss = 0 if Cf is False else self.criterion_L2L(Fds, Cf)
 
             loss = self.w1*(category_loss + self.alpha*confuse_domain_loss) + self.w2*(domain_loss + self.alpha*confuse_category_loss) + self.w3*reconstructor_loss + self.clip*clip_loss
             loss.backward()
