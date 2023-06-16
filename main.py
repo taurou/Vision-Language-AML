@@ -114,8 +114,8 @@ def main(opt):
                     if iteration % opt['validate_every'] == 0:
                         # Run validation
                         val_accuracy, val_loss, val_reconstructor_loss = experiment.validate(validation_loader, validation = True)
-                        logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
-                        print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+                        logging.info(f'[VAL - {iteration}] Loss: {val_loss} | RecLoss: {val_reconstructor_loss}')
+                        print(f'[VAL - {iteration}] Loss: {val_loss} | RecLoss: {val_reconstructor_loss}')
 
                         # We save the best checkpoint based on the validation accuracy
                         if val_reconstructor_loss <= best_reconstructor_loss and iteration > 500:    
@@ -156,8 +156,8 @@ def main(opt):
                     if iteration % opt['validate_every'] == 0:
                         # Run validation
                         val_accuracy, val_loss, val_reconstructor_loss = experiment.validate(validation_loader, validation = True)
-                        logging.info(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
-                        print(f'[VAL - {iteration}] Loss: {val_loss} | Accuracy: {(100 * val_accuracy):.2f}')
+                        logging.info(f'[VAL - {iteration}] Loss: {val_loss} | RecLoss: {val_reconstructor_loss}')
+                        print(f'[VAL - {iteration}] Loss: {val_loss} | RecLoss: {val_reconstructor_loss}')
 
                         # We save the best checkpoint based on the validation accuracy
                         if val_reconstructor_loss <= best_reconstructor_loss and iteration > 500:    
