@@ -55,7 +55,7 @@ def main(opt):
     if not opt['test']: # Skip training if '--test' flag is set
         iteration = 0
         best_accuracy = 0
-        best_reconstructor_loss = 0
+        best_reconstructor_loss = 10000.0
         total_train_loss = 0
 
         # Restore last checkpoint
@@ -172,8 +172,8 @@ def main(opt):
                     iteration += 1
                     if iteration > opt['max_iterations']:
                         break
-    if(len(val_y) != 0):
-        plotValidation(val_x, val_y, opt)
+    #if(len(val_y) != 0):
+    #    plotValidation(val_x, val_y, opt)
 
     # Test on BEST checkpoint
     experiment.load_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth')
