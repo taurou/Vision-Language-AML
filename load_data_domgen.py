@@ -22,7 +22,7 @@ DG_labels = {"cartoon": {"art_painting": 0, "sketch": 1, "photo": 2},
              }
 
 
-description_titles = ["Level of details:" , "Edges:" , "Color saturation:", "Color shades:","Background:" ,"Single instance:" , "Text:" , "Texture:",  "Perspective:" ]
+description_titles = ["Level of details: " , "Edges: " , "Color saturation: ", "Color shades: ","Background: " ,"Single instance: " , "Text: " , "Texture: ",  "Perspective: " ]
 
 
 def tokenize_description(item, description_titles):
@@ -34,8 +34,7 @@ def tokenize_description(item, description_titles):
 def create_dict(json_descr):
     dict = {}
     for item in json_descr:
-        description = tokenize_description(item["descriptions"], description_titles).strip()
-        dict[item["image_name"]] = description
+        dict[item["image_name"]] = tokenize_description(item["descriptions"], description_titles)
     return dict
 
 
