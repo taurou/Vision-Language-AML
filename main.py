@@ -142,9 +142,7 @@ def main(opt):
     # Test on BEST checkpoint
     experiment.load_checkpoint(f'{opt["output_path"]}/best_checkpoint.pth')
     test_accuracy, _ = experiment.validate(test_loader)
-    logging.info(f'[TEST] Best checkpoint iteration: #{best_iteration} Best accuracy: {(100 * best_accuracy):.2f}')
     logging.info(f'[TEST] Best checkpoint Accuracy: {(100 * test_accuracy):.2f}')
-    print(f'[TEST] Best checkpoint iteration: #{best_iteration} Best accuracy: {(100 * best_accuracy):.2f}')
     print(f'[TEST] Best checkpoint Accuracy: {(100 * test_accuracy):.2f}')
     
     # Test on LAST checkpoint

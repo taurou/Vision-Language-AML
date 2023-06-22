@@ -3,7 +3,7 @@ import argparse
 import json
 import sys
 
-experiments=['clip_disentangle','domain_disentangle']
+experiments=['baseline','domain_disentangle','clip_disentangle']
 targets=[ 'sketch','cartoon','photo']
 
 parser = argparse.ArgumentParser()
@@ -26,12 +26,3 @@ for target in targets:
     for experiment in experiments:
         args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target,'--dom_gen','--weights',weights]
         subprocess.run(args1, check=True)
-
-
-'''
-
-# Run the second Python program
-args2 = ['python', 'main.py', '--e', '1', '--b', '2']
-subprocess.run(args2, check=True)
-
-'''
