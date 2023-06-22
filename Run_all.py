@@ -4,15 +4,15 @@ import json
 import sys
 
 experiments=['baseline','domain_disentangle','clip_disentangle']
-targets=[ 'sketch','cartoon','photo']
+targets=[ 'cartoon','sketch','photo']
 
 for target in targets:
     for experiment in experiments:
-        args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target,'--weights']
+        args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target]
         subprocess.run(args1, check=True)
 
 #DOMGEN
 for target in targets:
     for experiment in experiments:
-        args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target,'--dom_gen','--weights']
+        args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target,'--dom_gen']
         subprocess.run(args1, check=True)
