@@ -1,7 +1,6 @@
 import argparse
 import torch
 import json
-from datetime import datetime
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
@@ -21,7 +20,7 @@ def parse_arguments():
     
     # Additional arguments can go below this line:
     #parser.add_argument('--test', type=str, default='some default value', help='some hint that describes the effect')
-    parser.add_argument('--weights', type=json.loads, default="[12, 0.1, 0.1, 1, 1]", help="if set, the experiment will run on different weights than the default value. Format: --weights=[weight1, weight2, weight3, alpha, clip_weight]") #w1, w2, w3, alpha, clip
+    parser.add_argument('--weights', type=json.loads, default="[12, 0.01, 0.01, 0.8, 0.2]", help="if set, the experiment will run on different weights than the default value. Format: --weights=[weight1, weight2, weight3, alpha, clip_weight]") #w1, w2, w3, alpha, clip
     parser.add_argument('--dom_gen', action='store_true', help='If set, the experiment use domain generalization.')
 
     # Build options dict
@@ -30,8 +29,6 @@ def parse_arguments():
     if not opt['cpu']:
         assert torch.cuda.is_available(), 'You need a CUDA capable device in order to run this experiment. See `--cpu` flag.'
 
-    now = datetime.now()
-    datetime_string = now.strftime("%Y%m%d_h%H%M%S")
-    opt['output_path'] = f'{opt["output_path"]}/record/{opt["experiment"]}_{opt["target_domain"]}{"" if not opt["dom_gen"] else "_domgen"}_{datetime_string}'
+    opt['output_path'] = f'{opt["output_path"]}/record/{opt["experiment"]}_{opt["target_domain"]}{"" if not opt["dom_gen"] else "_domgen"}'
 
     return opt
