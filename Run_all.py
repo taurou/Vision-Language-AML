@@ -6,23 +6,13 @@ import sys
 experiments=['baseline','domain_disentangle','clip_disentangle']
 targets=[ 'sketch','cartoon','photo']
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--w', type=str, help='Vector argument')
-args = parser.parse_args()
-
-if not args.w:
-    print("Please provide the vector argument '--w=[0.1, 0.2, 0.3]'.")
-    sys.exit(-1)
-else:
-    weights = args.w
-
 for target in targets:
     for experiment in experiments:
-        args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target,'--weights',weights]
+        args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target,'--weights']
         subprocess.run(args1, check=True)
 
 #DOMGEN
 for target in targets:
     for experiment in experiments:
-        args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target,'--dom_gen','--weights',weights]
+        args1 = ['python', 'main.py', '--experiment', experiment, '--target_domain', target,'--dom_gen','--weights']
         subprocess.run(args1, check=True)
